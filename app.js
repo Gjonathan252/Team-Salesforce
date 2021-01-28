@@ -4,8 +4,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 // require('dotenv/config');
 const dotenv = require('dotenv');
+const ejs = require('ejs');
 const postRoute = require('./routes/userposts');
 const path = require('path');
+
+//set view to ejs for showing mongodb data
+app.set('view engine', 'ejs');
+
 
 //CONNECT TO DIR PATH INDEX.HTML
 app.use('/public', express.static(path.join(__dirname, 'static')));

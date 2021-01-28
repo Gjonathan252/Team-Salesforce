@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Menu</title>
+</head>
+<body>
+    <%itemList.forEach(item => {%>
+        <h1><%= item.item_name%></h1>
+        <p><%= item.item_price%></p>
+        <p><%= item.item_details%></p>
+        <button> Add to cart</button>
+    <%})%>
+</body>
+</html>

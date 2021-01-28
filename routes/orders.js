@@ -19,9 +19,10 @@ router.post('/', async (req,res)=>{
 });
 
 //get all orders
-router.get('/all', async (req, res)=>{
+router.get('/', async (req, res)=>{
     try{
-        const items = await Order.find(); 
+        const returnedOrders = await Order.find(); 
+        res.json(returnedOrders); 
     }catch (err){
         res.json({message: err});
     }

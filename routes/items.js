@@ -41,15 +41,23 @@ router.delete('/:itemId', async (req,res)=>{
     }
 });
 
-//Return all menu items
-router.get('/', async (req, res)=>{
-    try{
-        const items = await Item.find(); 
-    }catch (err){
-        res.json({message: err});
-    }
+//Return all menu items then passing to ejs tempalte for customer menu
+router.get('/', (req, res)=>{
+    Item.find({}, function(err, items){
+        res.render('customermenu', {
+            itemList: items
+        })
+    }).sort({item_category: -1});
 });
-// no errors returned, runs on PostMan but request never actually goes through
+//Return all menu items then passing to ejs tempalte for admin menu
+router.get('/admin', (req, res)=>{
+    Item.find({}, function(err, items){
+        res.render('adminmenu', {
+            itemList: items
+        })
+    }).sort({item_category: -1});
+});
+//FIXED
 
 //Find by id
 router.get('/:itemId', async (req, res)=>{
