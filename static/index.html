@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/public/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
+    <script src="js/resNavbar.js"></script>
     <script src="js/scripts.js"></script>
 </head>
 
@@ -16,7 +17,11 @@
     <!--Start of Navbar section-->
     <nav class="navbar">
         <div class="navbar__container">
-            <a href="/" id="navbar__logo"><i class="fas fa-stroopwafel"></i>Restaurant Name</a>
+            <a href="/" id="navbar__logo"><i class="fas fa-stroopwafel"></i>Demo</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span> <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
             <ul class="navbar__menu">
                 <li class="navbar__item">
                     <a href="/public/index.html" class="navbar__links">Home</a>
@@ -44,14 +49,12 @@
 
     <div class="container__bottom">
         <div class="container__flex">
-            <a href="/public/reservation.html" style="text-decoration:none;"><i class="fas fa-chair"></i>Dine in</a>
+            <a href="/public/reservation.html" class="index-option" style="text-decoration:none;"><i class="fas fa-chair"></i>Dine in</a>
         </div>
         <div class="container__flex">
-            <a href="/public/menu.html" style="text-decoration:none;"><i class="fas fa-car-side"></i>Order To-Go</a>
+            <a href="/public/menu.html" class="index-option" style="text-decoration:none;"><i class="fas fa-car-side"></i>Order To-Go</a>
         </div>
     </div>
     <!--End of Main page section-->
-
 </body>
-
 </html>
