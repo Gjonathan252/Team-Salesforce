@@ -16,7 +16,12 @@
     <!--Start of Navbar section-->
     <nav class="navbar">
         <div class="navbar__container">
-            <a href="/" id="navbar__logo"><i class="fas fa-stroopwafel"></i>Restaurant Name</a>
+            <a href="/" id="navbar__logo"><i class="fas fa-stroopwafel"></i>Demo</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
             <ul class="navbar__menu">
                 <li class="navbar__item">
                     <a href="/public/index.html" class="navbar__links">Home</a>
@@ -38,7 +43,7 @@
     <!--Start of Main page section-->
     <div class="container__log">
         <div class="login__box">
-            <div class="res__logo"><i class="fas fa-stroopwafel"></i>Restaurant Name</div>
+            <div class="res__logo"><i class="fas fa-stroopwafel"></i>Demo</div>
             <form action="/" method="/api/user/login">
                 <label for="username" id="name__pass">Username</label>
                 <input type="text" id="name__passbox" name="username" placeholder="Username">
@@ -52,8 +57,7 @@
             </div>
         </div>
     </div>
+    <script src="/public/resNavbar.js"></script>  
     <!--End of Main page section-->
-
 </body>
-
 </html>

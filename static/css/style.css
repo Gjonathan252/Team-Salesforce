@@ -42,13 +42,13 @@ body{
     position: sticky;
     top: 0;
     z-index: 999;
-    opacity: 0.3;
+    /* opacity: 0.3; */
     width: 100%;
 }
 
-.navbar:hover{
+/* .navbar:hover{
     opacity: 1.0;
-}
+} */
 
 .navbar__container{
     display: flex;
@@ -102,11 +102,6 @@ body{
     height: 100%;
 }
 
-.navbar__links:hover{
-    color: #CFCD01;
-    transition: all 0.5s ease;
-}
-
 .navbar__btn{
     display: flex;
     justify-content: center;
@@ -133,6 +128,11 @@ body{
 
 .button:hover{
     background: #CFCD01;
+    transition: all 0.5s ease;
+}
+
+.navbar__links:hover{
+    color: #CFCD01;
     transition: all 0.5s ease;
 }
 
@@ -171,13 +171,7 @@ body{
     }
 
     #navbar__logo{
-        padding-left: 15px;
-    }
-
-    .navbar__toggle{
-        padding-right: 12px;
-        padding-bottom: 10px;
-        margin: auto 0;
+        padding-left: 25px;
     }
 
     .navbar__toggle .bar{  
@@ -185,7 +179,7 @@ body{
         height: 3px;
         margin: 5px auto;
         transition: all 0.3s ease-in-out;
-        background: #FFFF;
+        background: #FFF;
     }
 
     .navbar__item{
@@ -203,13 +197,20 @@ body{
         padding-bottom: 2rem;
     }
 
-    .buttom{
+    .button{
         display: flex;
         justify-content: center;
         align-items: center;
         width: 80%;
         height: 80px;
         margin: 0;
+    }
+
+    #mobile-menu{
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        transform: translate(5%, 20%);
     }
 
     .navbar__toggle .bar{
@@ -229,9 +230,9 @@ body{
         transform: translateY(-8px) rotate(-45deg);
     }
 }
-/*End of Header Section Start here*/
+/*End of Header Section Start here ----------------------------------------------------------*/
       
-/*Start of Main page Section here*/
+/*Start of Main page Section here -----------------------------------------------------------*/
     .container-index{
         padding-top: 8%;
         display: flex;
@@ -313,7 +314,15 @@ body{
 
     .container__flex a{
         margin: auto;
-        font-size: 100%;
+        font-size: 1.8rem;
+    }
+
+    .fa-chair{
+        font-size: 3rem;
+    }
+    
+    .fa-car-side{
+        font-size: 3rem;
     }
 }
 /*End of Main page Section here*/
@@ -558,6 +567,25 @@ body{
     font-size: 40px;
     color: #fff;
 } 
+
+@media screen and (max-width: 960px){
+    .container__log{
+        padding-top: 10rem;
+    }
+
+    .login__box{
+        width: 80%;
+    }
+
+    #name__pass{
+        padding-left: 15px;
+    }
+
+    .comment{
+        padding: 20px;
+    }
+}
+
 /* End of Login */
 
 /* Start of create-account */
