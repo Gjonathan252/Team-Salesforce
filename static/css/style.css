@@ -370,14 +370,15 @@ body{
     }
 
     #ps__label{
-        margin-right: 60%;
+        display: inline;
     }
 
-    #part__size{
-        width: 80%;
+    #party__size{
+        width: 25%;
         border: none;
         border-radius: 4px;
         background-color: #FFF;
+        display: inline;
     }
 
     .Make__Reservation{
@@ -419,10 +420,6 @@ body{
     .Products_Section1{
         display:flex;
         padding: 80px 100px;
-    }
-    
-    .top-Tab1{
-        margin-left: 27px;
     }
     
     .top-Tab1 ul li input#date, input#time{background:none;}
@@ -959,3 +956,220 @@ th, td {
     transition: all 0.5s ease;
 }
 /* End of menu /////////////////////////////////////////////////////////////// */
+
+/* Start of about /////////////////////////////////////////////////////////////// */
+.right-section1-about{
+    height: 350px; /* Full-height: remove this if you want "auto" height */
+    width: 20%; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 196px; /* Stay at the top */
+    right: 0;
+    background-color: #F7F0E1;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    border: 6px solid #E4D8CC;
+    border-radius: 5px;
+    align-items: center;
+    display: none;
+}
+
+.right-section-x{
+    padding: 2px 5px;
+    font-size: 1rem;
+    margin-left: 90%;
+    background-color: #F7F0E1;
+    border: 2px solid #B7860C;
+    color: #B7860C;
+}
+
+.Products_Section1-about{
+    display:flex;
+    padding: 80px 0 0 30px;
+}
+
+.left-section1-about{
+    width: 70%;
+}
+
+#dateForm-about{
+    padding: 0;
+    text-align: left;
+}
+
+.left-top-about{
+    padding-top: 184px;
+    position: relative;
+    margin-left: 0;
+}
+
+.date-about, .time-about, .submit-about{
+    display: inline;
+    position: relative;
+    left: 0;
+    color: #FFCC02;
+    background-color: #83878A;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+#date__1, #time__1, #submitBtn__1{
+    padding-left: 5px;
+    font-size: 1rem;
+    color: #FFCC02;
+    background-color: #83878A;
+}
+
+.legend__img{
+    width: 350px;
+    height: 210px;
+    border: 10px solid #656A6F;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.content_col3-about{
+    background-image:url('/public/images/woodplanks.png');
+    width: 100%;
+    height: 60rem;
+    position: relative;
+}
+
+.img-swap{
+    width: 150px;
+    height: 150px;
+}
+
+.img-swap-l{
+    width:250px;
+    height: 150px;
+}
+
+/* table position */
+
+.table1{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+
+.table2{
+    position: absolute;
+    top: 30%;
+    left: 40%;
+}
+
+.table3{
+    position: absolute;
+    top: 10%;
+    right: 10%;
+}
+
+.table4{
+    position: absolute;
+    bottom: 30%;
+    left: 10%;
+}
+
+.table5{
+    position: absolute;
+    bottom: 10%;
+    left: 40%;
+}
+
+.table6{
+    position: absolute;
+    bottom: 30%;
+    right: 10%;
+}
+
+@media screen and (max-width: 960px){
+    .right-section1-about{
+        height: 350px; /* Full-height: remove this if you want "auto" height */
+        width: 100%; /* Set the width of the sidebar */
+        position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+        z-index: 1; /* Stay on top */
+        top: 196px; /* Stay at the top */
+        right: 0;
+        background-color: #F7F0E1;
+        overflow-x: hidden; /* Disable horizontal scroll */
+        padding-top: 20px;
+        border: 6px solid #E4D8CC;
+        border-radius: 5px;
+        align-items: center;
+        display: none;
+    }
+
+    .Products_Section1-about{
+        display:flex;
+        padding: 80px 0 0 0;
+    }
+
+    .left-section1-about{
+        width: 100%;
+    }
+
+    .img-swap{
+        width: 70px;
+        height: 70px;
+    }
+    
+    .img-swap-l{
+        width: 100px;
+        height: 70px;
+    }
+
+    .Products_Section1-about{
+        display:flex;
+        padding-top: 80px;
+    }
+    
+    .left-section1-about{
+        width: 100%;
+    }
+    
+    #dateForm-about{
+        padding: 0;
+        text-align: left;
+    }
+    
+    .left-top-about{
+        padding-top: 184px;
+        position: relative;
+        margin-left: 0;
+    }
+    
+    .date-about, .time-about, .submit-about{
+        display: inline;
+        position: relative;
+        left: 0;
+        background-color: #656A6F;
+        font-size: 0.8rem;
+        color: #FFCC02;
+        padding: 0.3rem;
+        border: none;
+        border-radius: 5px;
+    }
+    
+    #date__1, #time__1, #submitBtn__1{
+        font-size: 0.8rem;
+        color: #FFCC02;
+        background-color: #83878A;
+    }
+    
+    .legend__img{
+        width: 300px;
+        height: 180px;
+        border: 2px solid #656A6F;
+        border-radius: 2px;
+        position: absolute;
+        top: 0;
+        margin-right: 10%;
+    }
+}
+
+/* End of about /////////////////////////////////////////////////////////////// */
