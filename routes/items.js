@@ -12,7 +12,8 @@ router.post('/', async (req,res)=>{
     });
     try{
         const savedItem = await item.save();
-        res.json(savedItem);
+        //res.json(savedItem);
+        res.redirect("/items/admin")
     }catch (err){
         res.json({message: err});
     }
@@ -32,10 +33,10 @@ router.patch('/:itemId', async (req,res) =>{
 });
 
 //Delete a menu item
-router.delete('/:itemId', async (req,res)=>{
+router.get('/delete/:itemId', async (req,res)=>{// changed to app.get to work with admin menu
     try{
         const removedItem = await Item.deleteOne({_id: req.params.itemId});
-        res.json(removedItem);
+        res.redirect("/items/admin")
     }catch (err){
         res.json({message: err});
     }
@@ -47,20 +48,21 @@ router.get('/', (req, res)=>{
         res.render('customermenu', {
             itemList: items
         })
-    }).sort({item_category: -1});
+    }).select("-_id");
 });
+
 //Return all menu items then passing to ejs tempalte for admin menu
 router.get('/admin', (req, res)=>{
     Item.find({}, function(err, items){
         res.render('adminmenu', {
             itemList: items
         })
-    }).sort({item_category: -1});
+    });
 });
 //FIXED
 
 //Find by id
-router.get('/:itemId', async (req, res)=>{
+router.get('/find/:itemId', async (req, res)=>{
     try{
         const item = await Item.findById(req.params.itemId);
         res.json(item); 

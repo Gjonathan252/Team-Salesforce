@@ -10,7 +10,7 @@ const ItemSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    item_category: {
+    item_category: {//drink, steak, pasta, burger
         type: String,
         required: true
     },

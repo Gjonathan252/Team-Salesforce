@@ -3,14 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Menu</title>
+    <title>Admin Menu</title>
 </head>
 <body>
+    <h1>Create a menu item</h1>
+    <form method="POST" action= "/items/">
+        <div>
+            <label for="name">Name of menu item:</label>
+            <input id=name name="item_name">
+        </div>
+        <div>
+            <label for="price">Price of menu item:</label>
+            <input id=price name="item_price">
+        </div>
+        <label for="category">Category of menu item:</label>
+            <select id="category" name="item_category">
+                <option value ="drink">Drink</option>
+                <option value ="steak">Steak</option>
+                <option value ="pasta">Pasta</option>
+                <option value ="burger">Burger</option>
+            </select>
+        <div>
+            <label for="details">Details for menu item:</label>
+            <textarea id="details" name="item_details"></textarea>
+        </div>
+            <button>Add menu item</button>
+    </form>
+    
+    <h1>Drinks</h1>
     <%itemList.forEach(item => {%>
-        <h1><%= item.item_name%></h1>
+        <%if(item.item_category=="drink"){%>
+        <div><strong><%= item.item_name%></strong>
         <p><%= item.item_price%></p>
         <p><%= item.item_details%></p>
         <p><%= item._id%></p>
-        <%})%>
+        <a href="/items/delete/<%= item._id %>">Delete Menu item</a>
+        </div>
+        <%}%>
+    <%})%>
+
+    <h1>Burgers</h1>
+    <%itemList.forEach(item => {%>
+        <%if(item.item_category=="burger"){%>
+        <div><strong><%= item.item_name%></strong>
+        <p><%= item.item_price%></p>
+        <p><%= item.item_details%></p>
+        <p><%= item._id%></p>
+        <a href="/items/delete/<%= item._id %>">Delete Menu item</a>
+        </div>
+        <%}%>
+    <%})%>
+
+    <h1>Pastas</h1>
+    <%itemList.forEach(item => {%>
+        <%if(item.item_category=="pasta"){%>
+        <div><strong><%= item.item_name%></strong>
+        <p><%= item.item_price%></p>
+        <p><%= item.item_details%></p>
+        <p><%= item._id%></p>
+        <a href="/items/delete/<%= item._id %>">Delete Menu item</a>
+        </div>
+        <%}%>
+    <%})%>
+
+    <h1>Steaks</h1>
+    <%itemList.forEach(item => {%>
+        <%if(item.item_category=="steak"){%>
+        <div><strong><%= item.item_name%></strong>
+        <p><%= item.item_price%></p>
+        <p><%= item.item_details%></p>
+        <p><%= item._id%></p>
+        <a href="/items/delete/<%= item._id %>">Delete Menu item</a>
+        </div>
+        <%}%>
+    <%})%>
 </body>
 </html>

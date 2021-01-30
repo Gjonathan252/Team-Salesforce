@@ -4,13 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Menu</title>
+<!-- <script> 
+    const drinks = [];
+    const pastas = [];
+    const steaks = [];
+    const burgers = [];
+    function sortMenu(itemList){
+        itemList.forEach(element => {
+            if(element.item_category=="drink")
+                drinks.push(element);
+            if(element.item_category=="pasta")
+                pastas.push(element);
+            if(element.item_category=="steak")
+                steaks.push(element);
+            if(element.item_category=="burger")
+                burgers.push(element);
+
+        });
+    }
+</script> -->
 </head>
 <body>
+    <h1>Drinks</h1>
     <%itemList.forEach(item => {%>
-        <h1><%= item.item_name%></h1>
+        <%if(item.item_category=="drink"){%>
+        <div><strong><%= item.item_name%></strong>
         <p><%= item.item_price%></p>
         <p><%= item.item_details%></p>
+        <p><%= item._id%></p>
         <button> Add to cart</button>
+        </div>
+        <%}%>
+    <%})%>
+
+    <h1>Burgers</h1>
+    <%itemList.forEach(item => {%>
+        <%if(item.item_category=="burger"){%>
+        <div><strong><%= item.item_name%></strong>
+        <p><%= item.item_price%></p>
+        <p><%= item.item_details%></p>
+        <p><%= item._id%></p>
+        <button> Add to cart</button>
+        </div>
+        <%}%>
+    <%})%>
+
+    <h1>Pastas</h1>
+    <%itemList.forEach(item => {%>
+        <%if(item.item_category=="pasta"){%>
+        <div><strong><%= item.item_name%></strong>
+        <p><%= item.item_price%></p>
+        <p><%= item.item_details%></p>
+        <p><%= item._id%></p>
+        <button> Add to cart</button>
+        </div>
+        <%}%>
+    <%})%>
+
+    <h1>Steaks</h1>
+    <%itemList.forEach(item => {%>
+        <%if(item.item_category=="steak"){%>
+        <div><strong><%= item.item_name%></strong>
+        <p><%= item.item_price%></p>
+        <p><%= item.item_details%></p>
+        <p><%= item._id%></p>
+        <button> Add to cart</button>
+        </div>
+        <%}%>
     <%})%>
 </body>
 </html>
