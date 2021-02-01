@@ -36,6 +36,9 @@ app.use('/statuses', statusRoutes);
 const orderRoutes = require('./routes/orders');
 app.use('/orders', orderRoutes);
 
+const postsReservation = require('./routes/reservations');
+app.use('/reservations',postsReservation);
+
 const authRoute = require('./routes/auth');
 
 app.use('/api/user', authRoute);
