@@ -16,7 +16,7 @@ router.post('/', async (req,res)=>{
 
 
 // get status
-router.get('/', async (req, res)=>{
+router.get('/checkstatus', async (req, res)=>{
     try{
         const status = await Status.find({}, {status:1, _id:0});
         res.json(status);

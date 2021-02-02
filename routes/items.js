@@ -3,7 +3,7 @@ const router = express.Router();
 const Item = require('../models/Item');
 
 //Add menu item
-router.post('/', async (req,res)=>{
+router.post('/items/new', async (req,res)=>{
     const item = new Item({
         item_name: req.body.item_name,
         item_price: req.body.item_price,
@@ -19,7 +19,7 @@ router.post('/', async (req,res)=>{
     }
 });
 
-//Update menu item
+//Update menu item not using this
 router.patch('/:itemId', async (req,res) =>{
     try{
         const updatedItem = await Item.updateOne(
@@ -44,11 +44,11 @@ router.get('/delete/:itemId', async (req,res)=>{// changed to app.get to work wi
 
 //Return all menu items then passing to ejs tempalte for customer menu
 router.get('/', (req, res)=>{
-    Item.find({}, function(err, items){
-        res.render('customermenu', {
-            itemList: items
-        })
-    }).select("-_id");
+     Item.find({}, function(err, list){
+         res.render('customermenu', {
+             menu: list
+         })
+     }).select("-_id");
 });
 
 //Return all menu items then passing to ejs tempalte for admin menu
@@ -61,7 +61,7 @@ router.get('/admin', (req, res)=>{
 });
 //FIXED
 
-//Find by id
+//Find by id// not using
 router.get('/find/:itemId', async (req, res)=>{
     try{
         const item = await Item.findById(req.params.itemId);
@@ -71,7 +71,7 @@ router.get('/find/:itemId', async (req, res)=>{
     }
 });
 
-//Find by category
+//Find by category// not using
 router.get('/category/:type', async (req, res)=>{
     try{
         const item = await Item.find({item_category: req.params.type});

@@ -19,7 +19,7 @@ router.post('/', async (req,res)=>{
 });
 
 //get all orders
-router.get('/', async (req, res)=>{
+router.get('/allorders', async (req, res)=>{
     try{
         const returnedOrders = await Order.find(); 
         res.json(returnedOrders); 
@@ -39,7 +39,7 @@ router.get('/:orderId', async (req, res)=>{
 });
 
 //delete and order
-router.delete('/:orderId', async (req,res)=>{
+router.delete('/delete/:orderId', async (req,res)=>{
     try{
         const removedOrder = await Order.deleteOne({_id: req.params.orderId});
         res.json(removedOrder);
