@@ -3,7 +3,7 @@ const router = express.Router();
 const Item = require('../models/Item');
 
 //Add menu item
-router.post('/items/new', async (req,res)=>{
+router.post('/new', async (req,res)=>{
     const item = new Item({
         item_name: req.body.item_name,
         item_price: req.body.item_price,

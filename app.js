@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 });
 //Parsing JSON
 app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 // const { urlencoded } = require('body-parser');
 // app.use(bodyParser, urlencoded({ extended: false }));
 
