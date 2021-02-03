@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/public/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
-    <script src="js/scripts.js"></script>
 </head>
 
 <body>
@@ -44,20 +43,32 @@
     <div class="container__log">
         <div class="login__box">
             <div class="res__logo"><i class="fas fa-stroopwafel"></i>Demo</div>
-            <form action="/" method="/api/user/login">
+            <form action="/api/user/login" method="POST">
                 <label for="username" id="name__pass">Username</label>
-                <input type="text" id="name__passbox" name="username" placeholder="Username">
+                <input type="text" id="name__passbox" name="email" placeholder="Email">
                 <label for="password" id="name__pass">Password</label>
                 <input type="text" id="name__passbox" name="password" placeholder="Password">
-                <a href="/" class="log__button">LOGIN</a>
+                <input href="/" class="log__button" type="submit" value=LOGIN>
+                <!-- <a href="/" class="log__button">LOGIN</a> -->
             </form>
+            <div><span id="error"><span></span></div>
             <div class="comment">
                 <span>Don't have an account yet?</span>
                 <a href="/public/create-account.html" class="create-account">Create Account</a>
             </div>
         </div>
     </div>
-    <script src="/public/resNavbar.js"></script>  
+    <script src="/public/resNavbar.js"></script>
     <!--End of Main page section-->
 </body>
+
 </html>
+
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+<script>
+    var error = "";
+    error = Cookies.get("Error");
+    if (error || error === "undefined") {
+        document.getElementById('error').innerHTML = error;
+    }
+</script>

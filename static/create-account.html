@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/public/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
-    <script src="js/scripts.js"></script>
+
 </head>
 
 <body>
@@ -45,31 +45,32 @@
                     to register as a new customer!</span>
             </div>
 
-            <form>
+            <form action="/api/user/register" method="POST">
                 <div class="ca-line">
                     <input type="text" id="full-name" name="firstname" placeholder="First name">
                     <input type="text" id="full-name" name="lastname" placeholder="Last name">
                 </div>
                 <div class="ca-line">
-                    <input type="text" id="ca-info-box" name="lastname" placeholder="Email">
+                    <input type="text" id="ca-info-box" name="email" placeholder="Email">
                 </div>
                 <div class="ca-line">
-                    <input type="text" id="ca-info-box" name="lastname" placeholder="Password">
+                    <input type="text" id="ca-info-box" name="password" placeholder="Password">
                 </div>
-                <div class="ca-birthdate">
+                <!-- <div class="ca-birthdate">
                     <div class="top-Tab1">
                         <ul>
                             <li>Date:<input type="date" id="date"></li>
                         </ul>
                     </div>
-                </div>
-                <div class="ca-line2">
+                </div> -->
+                <!-- <div class="ca-line2">
                     <input type="text" id="ca-admin-box" name="lastname"
                         placeholder="*If you are not registering as Admin, please ignore this box.">
-                </div>
-
-                <a href="/" class="log__button">Submit</a>
+                </div> -->
+                <input href="http://localhost:3000/public/index.html" class="log__button" type="submit" value=Submit>
+                <!-- <a href="/" class="log__button">Submit</a> -->
             </form>
+            <div><span id="error"><span></span></div>
 
         </div>
     </div>
@@ -78,3 +79,13 @@
 </body>
 
 </html>
+
+
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+<script>
+    var error = "";
+    error = Cookies.get("Error");
+    if (error || error === "undefined") {
+        document.getElementById('error').innerHTML = error;
+    }
+</script>

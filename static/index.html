@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/public/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
-     
+
 </head>
 
 <body>
@@ -48,13 +48,27 @@
 
     <div class="container__bottom">
         <div class="container__flex">
-            <a href="/public/reservation.html" class="index-option" style="text-decoration:none;"><i class="fas fa-chair"></i>Dine in</a>
+            <a href="/public/reservation.html" class="index-option" style="text-decoration:none;"><i
+                    class="fas fa-chair"></i>Dine in</a>
         </div>
         <div class="container__flex">
-            <a href="/public/menu.html" class="index-option" style="text-decoration:none;"><i class="fas fa-car-side"></i>Order To-Go</a>
+            <a href="/public/menu.html" class="index-option" style="text-decoration:none;"><i
+                    class="fas fa-car-side"></i>Order To-Go</a>
         </div>
     </div>
-    <script src="/public/resNavbar.js"></script>  
+    <script src="/public/resNavbar.js"></script>
     <!--End of Main page section-->
 </body>
+
 </html>
+
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+<script>
+    var authtoken = Cookies.get("auth-token");
+    fetch('http://localhost:3000/api/user/getUserName', { method: 'POST', authtoken })
+        .then(results => results.json())
+        .then(console.log);
+
+        //below will be condition to display users name or show login in the login btn top right.
+    // document.getElementById('username').innerHTML = authtoken;
+</script>
