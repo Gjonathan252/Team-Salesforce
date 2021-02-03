@@ -4,78 +4,198 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Menu</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
 </head>
 <body>
-    <h1>Create a menu item</h1>
-    <form method="POST" action= "/items/new">
-        <div>
-            <label for="name">Name of menu item:</label>
-            <input id=name name="item_name">
+    <!--Start of Navbar section-->
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="/" id="navbar__logo"><i class="fas fa-stroopwafel"></i>Demo</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/public/index.html" class="navbar__links">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/public/menu.html" class="navbar__links">Menu</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/public/about.html" class="navbar__links">About Us</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="/public/login.html" class="button">LOGIN</a>
+                </li>
+            </ul>
         </div>
-        <div>
-            <label for="price">Price of menu item:</label>
-            <input id=price name="item_price">
-        </div>
-        <label for="category">Category of menu item:</label>
-            <select id="category" name="item_category">
-                <option value ="drink">Drink</option>
-                <option value ="steak">Steak</option>
-                <option value ="pasta">Pasta</option>
-                <option value ="burger">Burger</option>
-            </select>
-        <div>
-            <label for="details">Details for menu item:</label>
-            <textarea id="details" name="item_details"></textarea>
-        </div>
+    </nav>
+    <!--End Navbar section-->
+
+    <!--Start of input box section-->
+    <form method="POST" action= "/items/new" class="admin-menu-form">
+    <h1 class="admin-menu-title">Create a menu item</h1>   
+        <table>
+            <tr>
+                <td class="admin-menu-col-1">
+                    <label for="name">Name of menu item:</label>                   
+                </td>
+                <td class="ad-col-2 ad-col-12">
+                    <input id=name name="item_name" class="admin-menu__L-input left-name">
+                </td>
+            </tr>
+            <tr>
+                <td class="admin-menu-col-1">
+                    <label for="price">Price of menu item:</label>                  
+                </td>
+                <td class="ad-col-2 ad-col-12">
+                    <input id=price name="item_price" class="admin-menu__L-input left-name">
+                </td>
+            </tr>
+            <tr>
+                <td class="admin-menu-col-1">
+                    <label for="category">Category of menu item:</label>                   
+                </td>
+                <td class="ad-col-2">
+                    <select id="category" name="item_category" class="admin-menu__L-input">
+                        <option value ="drink">Drink</option>
+                        <option value ="steak">Steak</option>
+                        <option value ="pasta">Pasta</option>
+                        <option value ="burger">Burger</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="admin-menu-col-1">
+                    <label for="details">Details for menu item:</label>           
+                </td>
+                <td class="ad-col-2">
+                    <textarea id="details" name="item_details" class="admin-menu__L-input"></textarea>
+                </td>
+            </tr>
+        </table>      
+        <div class="ad-menu-button-row">
             <button>Add menu item</button>
+        </div>
     </form>
-    
-    <h1>Drinks</h1>
-    <%itemList.forEach(item => {%>
-        <%if(item.item_category=="drink"){%>
-        <div><strong><%= item.item_name%></strong>
-        <p><%= item.item_price%></p>
-        <p><%= item.item_details%></p>
-        <p><%= item._id%></p>
-        <a href="/items/delete/<%= item._id %>">Delete Menu item</a>
-        </div>
-        <%}%>
-    <%})%>
+    <!-- End of input box section -->
 
-    <h1>Burgers</h1>
-    <%itemList.forEach(item => {%>
-        <%if(item.item_category=="burger"){%>
-        <div><strong><%= item.item_name%></strong>
-        <p><%= item.item_price%></p>
-        <p><%= item.item_details%></p>
-        <p><%= item._id%></p>
-        <a href="/items/delete/<%= item._id %>">Delete Menu item</a>
-        </div>
-        <%}%>
-    <%})%>
+<hr class="admin-menu-seperator">
 
-    <h1>Pastas</h1>
-    <%itemList.forEach(item => {%>
-        <%if(item.item_category=="pasta"){%>
-        <div><strong><%= item.item_name%></strong>
-        <p><%= item.item_price%></p>
-        <p><%= item.item_details%></p>
-        <p><%= item._id%></p>
-        <a href="/items/delete/<%= item._id %>">Delete Menu item</a>
-        </div>
-        <%}%>
-    <%})%>
+    <!-- Start of bottom section -->
+    <table class="list__box">
+        <tr>
+            <td>
+                <div class="item__list">
+                    <table>
+                        <tr>
+                            <th>
+                                <h1>Drinks</h1>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <%itemList.forEach(item => {%>
+                                    <%if(item.item_category=="drink"){%>
+                                    <div><strong><%= item.item_name%></strong>
+                                    <p><%= item.item_price%></p>
+                                    <p><%= item.item_details%></p>
+                                    <p><%= item._id%></p>
+                                    <a href="/items/delete/<%= item._id %>" class="item__delete-text">Delete Menu item</a>
+                                    <hr class="item__breaker">
+                                    </div>
+                                    <%}%>
+                                <%})%>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>           
+            <td>
+                <div class="item__list">
+                    <table>
+                        <tr>
+                            <th>
+                                <h1>Burgers</h1>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <%itemList.forEach(item => {%>
+                                    <%if(item.item_category=="burger"){%>
+                                    <div><strong><%= item.item_name%></strong>
+                                    <p><%= item.item_price%></p>
+                                    <p><%= item.item_details%></p>
+                                    <p><%= item._id%></p>
+                                    <a href="/items/delete/<%= item._id %>" class="item__delete-text">Delete Menu item</a>
+                                    <hr class="item__breaker">
+                                    </div>
+                                    <%}%>
+                                <%})%>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+            <td>
+                <div class="item__list">
+                    <table>
+                        <tr>
+                            <th>
+                                <h1>Pastas</h1>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <%itemList.forEach(item => {%>
+                                    <%if(item.item_category=="pasta"){%>
+                                    <div><strong><%= item.item_name%></strong>
+                                    <p><%= item.item_price%></p>
+                                    <p><%= item.item_details%></p>
+                                    <p><%= item._id%></p>
+                                    <a href="/items/delete/<%= item._id %>" class="item__delete-text">Delete Menu item</a>
+                                    <hr class="item__breaker">
+                                    </div>
+                                    <%}%>
+                                <%})%>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+            <td>
+                <div class="item__list">
+                    <table>
+                        <tr>
+                            <th>
+                                <h1>Steaks</h1>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <%itemList.forEach(item => {%>
+                                    <%if(item.item_category=="steak"){%>
+                                    <div><strong><%= item.item_name%></strong>
+                                    <p><%= item.item_price%></p>
+                                    <p><%= item.item_details%></p>
+                                    <p><%= item._id%></p>
+                                    <a href="/items/delete/<%= item._id %>" class="item__delete-text">Delete Menu item</a>
+                                    <hr class="item__breaker">
+                                    </div>
+                                    <%}%>
+                                <%})%>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
 
-    <h1>Steaks</h1>
-    <%itemList.forEach(item => {%>
-        <%if(item.item_category=="steak"){%>
-        <div><strong><%= item.item_name%></strong>
-        <p><%= item.item_price%></p>
-        <p><%= item.item_details%></p>
-        <p><%= item._id%></p>
-        <a href="/items/delete/<%= item._id %>">Delete Menu item</a>
-        </div>
-        <%}%>
-    <%})%>
+    <!-- End of bottom section -->
 </body>
 </html>

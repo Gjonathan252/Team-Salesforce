@@ -42,13 +42,13 @@ body{
     position: sticky;
     top: 0;
     z-index: 999;
-    /* opacity: 0.3; */
+    opacity: 0.3;
     width: 100%;
 }
 
-/* .navbar:hover{
+.navbar:hover{
     opacity: 1.0;
-} */
+}
 
 .navbar__container{
     display: flex;
@@ -1173,3 +1173,114 @@ th, td {
 }
 
 /* End of about /////////////////////////////////////////////////////////////// */
+
+/* Start of admin-menu //////////////////////////////////////////////////////// */
+
+.admin-menu-title{
+    background-color: #FFF;
+    background-image: linear-gradient(to top, #FFCC02 0%, #131313 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    text-decoration: none;
+    font-size: 4rem;
+    font-family: 'Pacifico-regular';
+    margin: auto;
+    padding: 2rem 0 2rem 0;
+}
+
+.admin-menu-form{
+    width: 60%;
+    background-color: #E8D8BD;
+    margin: auto;
+    border: 10px solid #B7860C;
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+
+.admin-menu-col-1{
+    width: 40%;
+    height: 5rem;
+}
+
+.admin-menu-form label{
+    font-size: 1.2rem;
+}
+
+.admin-menu__L-input{
+    height: 20%;
+    width: 95%;
+}
+
+.left-name{
+    font-size: 1rem;
+    padding: 5px;
+}
+
+.ad-col-2{
+    padding: 2px;
+}
+
+.ad-col-12{
+    padding: 0 0 0 1rem;
+}
+
+.ad-menu-button-row{
+    padding: 1.5rem;
+}
+
+.admin-menu-form button{
+    margin: auto;
+    font-size: 1.6rem;
+    font-family: 'Comfortaa-Bold';
+    padding: 10px;
+    background-color: #B7860C;
+    color: #FFF;
+    border: 1px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.admin-menu-form button:hover{
+    background-color: #5EA777;
+    transition: all 0.5s ease;
+}
+
+.list__box tr{
+    vertical-align: top;
+}
+
+.item__list{
+    width: 90%;
+    background-color: #E8D8BD;
+    margin:auto;
+    top: 0;
+    border: 10px solid #B7860C;
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+
+.admin-menu-seperator{
+    border: none;
+    padding: 2rem;
+}
+
+.item__list h1{
+    border-bottom: 4px solid #131313;
+}
+
+.item__breaker{
+    border: none;
+    border-top: 2px solid #B7860C;
+    
+    padding-bottom: 10px;
+}
+
+.item__delete-text{
+    text-decoration: none;
+    color: #FF0000;
+    font-weight: bold;
+}
+/* End of admin-menu ////////////////////////////////////////////////////////// */
