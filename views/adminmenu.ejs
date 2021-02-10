@@ -63,7 +63,7 @@
                 <td class="ad-col-2">
                     <select id="category" name="item_category" class="admin-menu__L-input">
                         <option value ="drink">Drink</option>
-                        <option value ="steak">Steak</option>
+                        <option value ="pizza">Pizza</option>
                         <option value ="pasta">Pasta</option>
                         <option value ="burger">Burger</option>
                     </select>
@@ -101,10 +101,11 @@
                             <td>
                                 <%itemList.forEach(item => {%>
                                     <%if(item.item_category=="drink"){%>
-                                    <div><strong><%= item.item_name%></strong>
+                                    <div class="item__mini-box">
+                                    <strong><%= item.item_name%></strong>
                                     <p><%= item.item_price%></p>
-                                    <p><%= item.item_details%></p>
                                     <p><%= item._id%></p>
+                                    <p><%= item.item_details%></p>
                                     <a href="/items/delete/<%= item._id %>" class="item__delete-text">Delete Menu item</a>
                                     <hr class="item__breaker">
                                     </div>
@@ -127,7 +128,8 @@
                             <td>
                                 <%itemList.forEach(item => {%>
                                     <%if(item.item_category=="burger"){%>
-                                    <div><strong><%= item.item_name%></strong>
+                                    <div class="item__mini-box">
+                                    <strong><%= item.item_name%></strong>
                                     <p><%= item.item_price%></p>
                                     <p><%= item.item_details%></p>
                                     <p><%= item._id%></p>
@@ -153,7 +155,8 @@
                             <td>
                                 <%itemList.forEach(item => {%>
                                     <%if(item.item_category=="pasta"){%>
-                                    <div><strong><%= item.item_name%></strong>
+                                    <div class="item__mini-box">
+                                    <strong><%= item.item_name%></strong>
                                     <p><%= item.item_price%></p>
                                     <p><%= item.item_details%></p>
                                     <p><%= item._id%></p>
@@ -172,14 +175,15 @@
                     <table>
                         <tr>
                             <th>
-                                <h1>Steaks</h1>
+                                <h1>Pizzas</h1>
                             </th>
                         </tr>
                         <tr>
                             <td>
                                 <%itemList.forEach(item => {%>
-                                    <%if(item.item_category=="steak"){%>
-                                    <div><strong><%= item.item_name%></strong>
+                                    <%if(item.item_category=="pizza"){%>
+                                    <div class="item__mini-box">
+                                    <strong><%= item.item_name%></strong>
                                     <p><%= item.item_price%></p>
                                     <p><%= item.item_details%></p>
                                     <p><%= item._id%></p>

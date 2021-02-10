@@ -1,58 +1,228 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Customer Menu</title>
-
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Drinks</h1>
-    <%menu.forEach(item => {%>
-        <%if(item.item_category=="drink"){%>
-        <div><strong><%= item.item_name%></strong>
-        <p><%= item.item_price%></p>
-        <p><%= item.item_details%></p>
-        <p><%= item._id%></p>
-        <button> Add to cart</button>
+     <!--Start of Navbar section-->
+     <nav class="navbar">
+        <div class="navbar__container">
+            <a href="/" id="navbar__logo"><i class="fas fa-stroopwafel"></i>Restaurant Name</a>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/public/index.html" class="navbar__links">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/public/menu.html" class="navbar__links">Menu</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/" class="navbar__links">About Us</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="/public/login.html" class="button">LOGIN</a>
+                </li>
+            </ul>
         </div>
-        <%}%>
-    <%})%>
+    </nav>
+    <!--End Navbar section-->
+    <!--Start of Main page section-->
+    <div class="menu__container">
 
-    <h1>Burgers</h1>
-    <%menu.forEach(item => {%>
-        <%if(item.item_category=="burger"){%>
-        <div><strong><%= item.item_name%></strong>
-        <p><%= item.item_price%></p>
-        <p><%= item.item_details%></p>
-        <p><%= item._id%></p>
-        <button> Add to cart</button>
+        <!-- Tab links -->
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'Burger')">Burger</button>
+            <button class="tablinks" onclick="openCity(event, 'Pasta')">Pasta</button>
+            <button class="tablinks" onclick="openCity(event, 'Pizza')">Pizza</button>
+            <button class="tablinks" onclick="openCity(event, 'Beverage')">Beverage</button>
         </div>
-        <%}%>
-    <%})%>
 
-    <h1>Pastas</h1>
-    <%menu.forEach(item => {%>
-        <%if(item.item_category=="pasta"){%>
-        <div><strong><%= item.item_name%></strong>
-        <p><%= item.item_price%></p>
-        <p><%= item.item_details%></p>
-        <p><%= item._id%></p>
-        <button> Add to cart</button>
+        <!-- Tab content -->
+        <div id="Burger" class="tabcontent">
+            <section class="container content-section">
+                <h2 class="section-header">Burger</h2>
+                <table>
+                    <tr>
+                        <td>
+                            <img src="/public/images/burger1.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                        <td>
+                            <img src="/public/images/burger2.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                        <td>
+                            <img src="/public/images/burger3.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                        <td>
+                            <img src="/public/images/burger4.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                    </tr>
+                </table>
+                <p class="section-description">
+                    Some description about burgers
+                </p>
+                <div class="shop-items">
+                    <%menu.forEach(item => {%>
+                        <%if(item.item_category=="burger"){%>
+                            <div class="shop-item">                       
+                                <strong class="shop-item-title"><%= item.item_name%></strong>
+                                <div class="shop-item-details">
+                                    <p class="shop-item-price"><%= item.item_price%></p>                    
+                                    <p><%= item.item_details%></p>
+                                    <p display="none"><%= item._id%></p>
+                                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                                </div>                               
+                            </div>
+                        <%}%>
+                    <%})%>             
+                </div>
+            </section>
         </div>
-        <%}%>
-    <%})%>
 
-    <h1>Steaks</h1>
-    <%menu.forEach(item => {%>
-        <%if(item.item_category=="steak"){%>
-        <div><strong><%= item.item_name%></strong>
-        <p><%= item.item_price%></p>
-        <p><%= item.item_details%></p>
-        <p><%= item._id%></p>
-        <button> Add to cart</button>
+        <div id="Pasta" class="tabcontent">
+            <section class="container content-section">
+                <h2 class="section-header">Pasta</h2>
+                <table>
+                    <tr>
+                        <td>
+                            <img src="/public/images/pasta1.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                        <td>
+                            <img src="/public/images/pasta2.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                        <td>
+                            <img src="/public/images/pasta3.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                        <td>
+                            <img src="/public/images/pasta4.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                    </tr>
+                </table>
+                <p class="section-description">
+                    Some description about burgers
+                </p>
+                <div class="shop-items">
+                    <%menu.forEach(item => {%>
+                        <%if(item.item_category=="pasta"){%>
+                            <div class="shop-item">                       
+                                <strong class="shop-item-title"><%= item.item_name%></strong>
+                                <div class="shop-item-details">
+                                    <p class="shop-item-price"><%= item.item_price%></p>                    
+                                    <p><%= item.item_details%></p>
+                                    <p display="none"><%= item._id%></p>
+                                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                                </div>                               
+                            </div>
+                        <%}%>
+                    <%})%>             
+                </div>
+            </section>
         </div>
-        <%}%>
-    <%})%>
+
+        <div id="Pizza" class="tabcontent">
+            <section class="container content-section">
+                <h2 class="section-header">Pizza</h2>
+                <table>
+                    <tr>
+                        <td>
+                            <img src="/public/images/burger1.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                        <td>
+                            <img src="/public/images/burger2.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                        <td>
+                            <img src="/public/images/burger3.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                        <td>
+                            <img src="/public/images/burger4.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                    </tr>
+                </table>
+                <p class="section-description">
+                    Some description about burgers
+                </p>
+                <div class="shop-items">
+                    <%menu.forEach(item => {%>
+                        <%if(item.item_category=="pizza"){%>
+                            <div class="shop-item">                       
+                                <strong class="shop-item-title"><%= item.item_name%></strong>
+                                <div class="shop-item-details">
+                                    <p class="shop-item-price"><%= item.item_price%></p>                    
+                                    <p><%= item.item_details%></p>
+                                    <p display="none"><%= item._id%></p>
+                                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                                </div>                               
+                            </div>
+                        <%}%>
+                    <%})%>             
+                </div>
+            </section>
+        </div>
+
+        <div id="Beverage" class="tabcontent">
+            <section class="container content-section">
+                <h2 class="section-header">Beverage</h2>
+                <table>
+                    <tr>
+                        <td>
+                            <img src="/public/images/burger1.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                        <td>
+                            <img src="/public/images/burger2.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                        <td>
+                            <img src="/public/images/burger3.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                        <td>
+                            <img src="/public/images/burger4.jpg" class="shop-item-image" alt="Burger Picture">
+                        </td>
+                    </tr>
+                </table>
+                <p class="section-description">
+                    Some description about burgers
+                </p>
+                <div class="shop-items">
+                    <%menu.forEach(item => {%>
+                        <%if(item.item_category=="drink"){%>
+                            <div class="shop-item">                       
+                                <strong class="shop-item-title"><%= item.item_name%></strong>
+                                <div class="shop-item-details">
+                                    <p class="shop-item-price"><%= item.item_price%></p>                    
+                                    <p><%= item.item_details%></p>
+                                    <p display="none"><%= item._id%></p>
+                                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                                </div>                               
+                            </div>
+                        <%}%>
+                    <%})%>             
+            </section>
+        </div>
+
+        <section class="cart__bottom">
+            <h2 class="section-header-cart"><i class="fas fa-shopping-cart"></i>Cart</h2>
+            <div class="cart-row">
+                <span class="cart-item cart-header cart-column">ITEM</span>
+                <span class="cart-price cart-header cart-column">PRICE</span>
+                <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+            </div>
+            <div class="cart-items">
+            </div>
+            <div class="cart-total">
+                <strong class="cart-total-title">Total</strong>
+                <span class="cart-total-price">$0</span>
+            </div>
+            <a href="/public/to-go-complete.html" class="to-go-cart-complete">
+                <button class="btn btn-primary btn-purchase" type="button"><i
+                        class="fas fa-money-bill-wave"></i>Purchase</button>
+            </a>
+        </section>
+    <!--End of Main page section-->
+
+    <script src="/public/cart1.js"></script>
 </body>
 </html>
