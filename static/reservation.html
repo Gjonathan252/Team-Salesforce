@@ -9,12 +9,14 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
 		integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
 	<script src="js/scripts.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
 		integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
 		crossorigin="anonymous">
 		</script>
+
 </head>
+
 
 <body>
 
@@ -39,14 +41,15 @@
 		</div>
 	</nav>
 	<!--End Navbar section-->
-
+	<div id="alert"></div>
 	<!-- Start of Product section-->
 	<div class="right-section1">
 		<div class="subtitle">Reservation Information</div>
+		<form method="POST" id="reserve_form">
 		<label for="name" id="name__label">Enter Name:</label>
-		<input class="name_text" id="name">
+		<input class="name_text" id="name" name="user_name">
 
-		<form>
+		
 			<label for="party__size" id="ps__label">Party Size:</label>
 			<select id="party__size" name="party_size">
 				<option value="1">1</option>
@@ -74,7 +77,7 @@
 			</div>
 			<div class="content_col3">
 				<div class="top-Tab3">
-					<ul>
+					<ul id="section1">
 						<li>
 							<div class="reserv_circle">
 								<p style=" padding: 0px 0; text-align: center;">
@@ -86,7 +89,7 @@
 							<div class="reserv_circle">
 								<p style=" padding: 0px 0; text-align: center;">
 									<label>
-										<input type="radio" name="table_num" value="1">
+										<input type="radio" name="table_num" value="1" id="seat_no1">
 										<img src="images/img_swap_on.png" alt="" class="img-swap" id="table_no1" />
 									</label>
 								</p>
@@ -97,7 +100,7 @@
 							<div class="reserv_circle">
 								<p style=" padding: 0px 0; text-align: center;">
 									<label>
-										<input type="radio" name="table_num" value="2">
+										<input type="radio" name="table_num" value="2" id="seat_no2">
 										<img src="images/img_swap_on.png" alt="" class="img-swap" id="table_no2" />
 									</label>
 								</p>
@@ -113,7 +116,7 @@
 							</div>
 						</li>
 					</ul>
-					<ul>
+					<ul  id="section2">
 						<li>
 							<div class="reserv_circle">
 								<p style=" padding: 0px 0; text-align: center;">
@@ -126,7 +129,7 @@
 							<div class="reserv_circle">
 								<p style=" padding: 0px 0; text-align: center;">
 									<label>
-										<input type="radio" name="table_num" value="3">
+										<input type="radio" name="table_num" value="3" id="seat_no3">
 										<img src="images/img_swap_on.png" alt="" class="img-swap" id="table_no3" />
 									</label>
 								</p>
@@ -136,7 +139,7 @@
 							<div class="reserv_circle">
 								<p style=" padding: 0px 0; text-align: center;">
 									<label>
-										<input type="radio" name="table_num" value="4">
+										<input type="radio" name="table_num" value="4" id="seat_no4">
 										<img src="images/img_swap_on.png" alt="" class="img-swap" id="table_no4" />
 									</label>
 								</p>
@@ -150,7 +153,7 @@
 							</div>
 						</li>
 					</ul>
-					<ul>
+					<ul id="section3">
 						<li>
 							<div class="reserv_circle">
 								<p style=" padding: 0px 0; text-align: center;">
@@ -162,7 +165,7 @@
 							<div class="reserv_circle">
 								<p style=" padding: 0px 0; text-align: center;">
 									<label>
-										<input type="radio" name="table_num" value="5">
+										<input type="radio" name="table_num" value="5" id="seat_no5">
 										<img src="images/img_swap_on.png" alt="" class="img-swap" id="table_no5" />
 									</label>
 								</p>
@@ -173,7 +176,7 @@
 							<div class="reserv_circle">
 								<p style=" padding: 0px 0; text-align: center;">
 									<label>
-										<input type="radio" name="table_num" value="6">
+										<input type="radio" name="table_num" value="6" id="seat_no6">
 										<img src="images/img_swap_on.png" alt="" class="img-swap" id="table_no6" />
 									</label>
 								</p>
@@ -198,21 +201,53 @@
 </body>
 
 </html>
-
 <script>
+	const check_status=async ()=> {  ///getting status
+			let url= `/statuses/checkstatus`
+			let {data}=await axios.get(url)
+
+			if(data[0].status==2){  
+				let url= `/seats/1`
+				let table_no=await axios.get(url)
+				table_no=table_no.data
+				console.log(table_no)
+				table_no.forEach((obj)=>{
+					$(`#seat_no${obj.seat_number}`).attr("disabled", true)
+					let image_src = $(`#table_no${obj.seat_number}`).attr('src');
+					image_src = image_src.replace('on', 'off')
+					$(`#table_no${obj.seat_number}`).attr('src', image_src);
+				})
+				
+			}
+
+
+			if(data[0].status==3){  
+				let url= `/seats`
+				let table_no=await axios.get(url)
+				table_no=table_no.data
+				console.log(table_no)
+				table_no.forEach((obj)=>{
+					$(`#seat_no${obj.seat_number}`).attr("disabled", true)
+					let image_src = $(`#table_no${obj.seat_number}`).attr('src');
+					image_src = image_src.replace('on', 'off')
+					$(`#table_no${obj.seat_number}`).attr('src', image_src);
+				})
+			}
+		};
 	$(document).ready(function () {
-
-
+		
+		check_status()
 		$("#dateForm").on("submit", async function (event) {
 			event.preventDefault();
 			try {
+			
 				if (this.date.value && this.time.value) {
 					document.getElementById('submitBtn').disabled = true
 					params = {
 						date: this.date.value,
 						time: this.time.value
 					}
-					let url = 'http://127.0.0.1:3000/reservations/check_status'
+					let url = '/reservations/check_status/checkstatus'
 					let { data } = await axios.post(url, params);
 
 					console.log(data)
@@ -235,6 +270,7 @@
 							$("input[type=radio][value=" + table.table_id + "]").attr("disabled", false);
 						}
 					});
+					check_status()
 					document.getElementById('submitBtn').disabled = false
 				}
 			} catch (e) {
@@ -248,7 +284,8 @@
 		$("#reserve_form").on("submit", async function (event) {
 			event.preventDefault();
 			try {
-				if (this.user_name.value && this.party_size.value) {
+				
+				if (this.user_name.value && this.party__size.value) {
 					document.getElementById('reserveBtn').disabled = true
 					let selected = $("input[type='radio']:checked");
 					if (selected.length > 0) {
@@ -264,17 +301,17 @@
 						} else {
 							let params = {
 								name: this.user_name.value,
-								party_size: this.party_size.value,
+								party_size: this.party__size.value,
 								date,
 								time,
 								table_num: selectedTable
 							}
 							console.log(params)
 
-							let url = 'http://127.0.0.1:3000/reservations'
+							let url = '/reservations'
 							let { data } = await axios.post(url, params);
 							if (data.success) {
-								window.location = '/public/reservation-complete.html?reservation_id=' + data.data._id
+								window.location='reservation-complete.html?reservation_id='+data.data._id
 							} else {
 								document.getElementById('alert').innerHTML = `<div class="alert">
 									<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 

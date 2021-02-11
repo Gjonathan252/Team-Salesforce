@@ -15,4 +15,19 @@ router.post('/', async (req,res)=>{
         res.json({message: err});
     }
 });
+
+
+//get all seat info
+
+router.get('/',async(req,res)=>{
+    const allseats=await Seat.find()
+    res.json(allseats)
+})
+
+//get list of table for a section
+router.get('/:section_id',async(req,res)=>{
+    const allseats=await Seat.find({section:req.params.section_id})
+    res.json(allseats)
+})
+
 module.exports = router;

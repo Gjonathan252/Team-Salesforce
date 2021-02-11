@@ -29,10 +29,12 @@ router.get('/checkstatus', async (req, res)=>{
 
 router.patch('/:statusId', async (req, res)=>{
     try{
-        const updatedStatus = await Status.updateOne(
+        const updatedStatus = await Status.findOneAndUpdate(
             {_id: req.params.statusId},
-            {$set: {status: req.body.status}}
+            {$set: {status: req.body.status}},
+            {new: true}
         );
+        res.send(updatedStatus)
     } catch (err){
         res.json({mseeage: err});
     }

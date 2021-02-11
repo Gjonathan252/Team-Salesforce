@@ -37,7 +37,7 @@
 
     <!--Start of Main page section-->
     <div class="container__comp">
-        <p>Your Reservation is complete!<br><span>Your reservation number is:</span></p>
+        <p>Your Reservation is complete!<br><span>Your reservation number is:<span id="reserve_span"></span></span></p>
     </div>
     <!--End of Main page section-->
 
@@ -49,5 +49,5 @@
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const reservation_id = urlParams.get('reservation_id')
-    document.getElementById('reserve_span').innerHTML = reservation_id
+    document.getElementById('reserve_span').innerHTML=reservation_id
 </script>
