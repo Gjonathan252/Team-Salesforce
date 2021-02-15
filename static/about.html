@@ -14,6 +14,8 @@
 		integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
 		crossorigin="anonymous">
 		</script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+	<script src="getUser.js"></script>
 </head>
 
 <body>
@@ -33,7 +35,7 @@
 					<a href="/" class="navbar__links">About Us</a>
 				</li>
 				<li class="navbar__btn">
-					<a href="/public/login.html" class="button">LOGIN</a>
+					<a id='username' href="/public/login.html" class="button">LOGIN</a>
 				</li>
 			</ul>
 		</div>
@@ -45,11 +47,11 @@
 		<button class="right-section-x" onclick="hide_pop()">X</button>
 		<div class="subtitle">Reservation Information</div>
 		<form method="POST" id="reserve_form">
-		<label for="name" id="name__label">Enter Name:</label>
-		<input class="name_text" id="name" name="user_name">		
+			<label for="name" id="name__label">Enter Name:</label>
+			<input class="name_text" id="name" name="user_name">
 
 			<label for="party__size" id="ps__label">Party Size:</label>
-			<select id="party__size" name="party_size"> 
+			<select id="party__size" name="party_size">
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
@@ -66,49 +68,52 @@
 			<div class="top-Tab1">
 				<form method="POST" id="dateForm-about">
 					<div class="left-top-about">
-						<div class="date-about">Date:<input type="date" name="date" id="date__1" ></div>
-						<div class="time-about">Time:<input type="time" name="time" id="time__1" min="09:00" max="18:00" required></div>
-                        <div class="submit-about"><input type="submit" value="Check" id="submitBtn__1"></div>
-                        <img src="images/Legend.png" alt="Legend" class="legend__img">
+						<div class="date-about">Date:<input type="date" name="date" id="date__1"></div>
+						<div class="time-about">Time:<input type="time" name="time" id="time__1" min="09:00" max="18:00"
+								required></div>
+						<div class="submit-about"><input type="submit" value="Check" id="submitBtn__1"></div>
+						<img src="images/Legend.png" alt="Legend" class="legend__img">
 					</div>
 				</form>
 			</div>
 			<div class="content_col3-about">
-                <div class="reserve-table table1">
-                    <label class="rev-table-small-1">
-                    <img src="images/table-s-un.png" alt="" class="img-swap" id="table_no1" onclick="show_pop()"/>
-                    <input type="radio" name="table_num" value="1" id="seat_no1">
-                    </label>
+				<div class="reserve-table table1">
+					<label class="rev-table-small-1">
+						<img src="images/table-s-un.png" alt="" class="img-swap" id="table_no1" onclick="show_pop()" />
+						<input type="radio" name="table_num" value="1" id="seat_no1">
+					</label>
 				</div>
-                <div class="reserve-table table2">
-                    <label class="rev-table-large-1">
-                    <img src="images/table-l-un.png" alt="" class="img-swap-l" id="table_no2" onclick="show_pop()"/>
-                    <input type="radio" name="table_num" value="2" id="seat_no2">
-                    </label>
+				<div class="reserve-table table2">
+					<label class="rev-table-large-1">
+						<img src="images/table-l-un.png" alt="" class="img-swap-l" id="table_no2"
+							onclick="show_pop()" />
+						<input type="radio" name="table_num" value="2" id="seat_no2">
+					</label>
 				</div>
 				<div class="reserve-table table3">
-                    <label class="rev-table-small-1">
-                    <img src="images/table-s-un.png" alt="" class="img-swap" id="table_no3" onclick="show_pop()"/>
-                    <input type="radio" name="table_num" value="3" id="seat_no3">
-                    </label>
-                </div>
-                <div class="reserve-table table4">
-                    <label class="rev-table-small-1">
-                    <img src="images/table-s-un.png" alt="" class="img-swap" id="table_no4" onclick="show_pop()"/>
-                    <input type="radio" name="table_num" value="4" id="seat_no4">
-                    </label>
+					<label class="rev-table-small-1">
+						<img src="images/table-s-un.png" alt="" class="img-swap" id="table_no3" onclick="show_pop()" />
+						<input type="radio" name="table_num" value="3" id="seat_no3">
+					</label>
 				</div>
-                <div class="reserve-table table5">
-                    <label class="rev-table-large-1">
-                    <img src="images/table-l-un.png" alt="" class="img-swap-l" id="table_no5" onclick="show_pop()"/>
-                    <input type="radio" name="table_num" value="5" id="seat_no5">
-                    </label>
+				<div class="reserve-table table4">
+					<label class="rev-table-small-1">
+						<img src="images/table-s-un.png" alt="" class="img-swap" id="table_no4" onclick="show_pop()" />
+						<input type="radio" name="table_num" value="4" id="seat_no4">
+					</label>
+				</div>
+				<div class="reserve-table table5">
+					<label class="rev-table-large-1">
+						<img src="images/table-l-un.png" alt="" class="img-swap-l" id="table_no5"
+							onclick="show_pop()" />
+						<input type="radio" name="table_num" value="5" id="seat_no5">
+					</label>
 				</div>
 				<div class="reserve-table table6">
-                    <label class="rev-table-small-1">
-                    <img src="images/table-s-un.png" alt="" class="img-swap" id="table_no6" onclick="show_pop()"/>
-                    <input type="radio" name="table_num" value="6" id="seat_no6">
-                    </label>
+					<label class="rev-table-small-1">
+						<img src="images/table-s-un.png" alt="" class="img-swap" id="table_no6" onclick="show_pop()" />
+						<input type="radio" name="table_num" value="6" id="seat_no6">
+					</label>
 				</div>
 			</div>
 		</div>
@@ -127,45 +132,45 @@
 
 
 
-	const check_status=async ()=> {  ///getting status
-			let url= `/statuses/checkstatus`
-			let {data}=await axios.get(url)
+	const check_status = async () => {  ///getting status
+		let url = `/statuses/checkstatus`
+		let { data } = await axios.get(url)
 
-			if(data[0].status==2){  
-				let url= `/seats/1`
-				let table_no=await axios.get(url)
-				table_no=table_no.data
-				console.log(table_no)
-				table_no.forEach((obj)=>{
-					$(`#seat_no${obj.seat_number}`).attr("disabled", true)
-					let image_src = $(`#table_no${obj.seat_number}`).attr('src');
-					image_src = image_src.replace('un', 'cov')
-					$(`#table_no${obj.seat_number}`).attr('src', image_src);
-				})
-				
-			}
+		if (data[0].status == 2) {
+			let url = `/seats/1`
+			let table_no = await axios.get(url)
+			table_no = table_no.data
+			console.log(table_no)
+			table_no.forEach((obj) => {
+				$(`#seat_no${obj.seat_number}`).attr("disabled", true)
+				let image_src = $(`#table_no${obj.seat_number}`).attr('src');
+				image_src = image_src.replace('un', 'cov')
+				$(`#table_no${obj.seat_number}`).attr('src', image_src);
+			})
+
+		}
 
 
-			if(data[0].status==3){  
-				let url= `/seats`
-				let table_no=await axios.get(url)
-				table_no=table_no.data
-				console.log(table_no)
-				table_no.forEach((obj)=>{
-					$(`#seat_no${obj.seat_number}`).attr("disabled", true)
-					let image_src = $(`#table_no${obj.seat_number}`).attr('src');
-					image_src = image_src.replace('un', 'cov')
-					$(`#table_no${obj.seat_number}`).attr('src', image_src);
-				})
-			}
-		};
+		if (data[0].status == 3) {
+			let url = `/seats`
+			let table_no = await axios.get(url)
+			table_no = table_no.data
+			console.log(table_no)
+			table_no.forEach((obj) => {
+				$(`#seat_no${obj.seat_number}`).attr("disabled", true)
+				let image_src = $(`#table_no${obj.seat_number}`).attr('src');
+				image_src = image_src.replace('un', 'cov')
+				$(`#table_no${obj.seat_number}`).attr('src', image_src);
+			})
+		}
+	};
 	$(document).ready(function () {
-		
+
 		check_status()
 		$("#dateForm-about").on("submit", async function (event) {
 			event.preventDefault();
 			try {
-			
+
 				if (this.date.value && this.time.value) {
 					document.getElementById('submitBtn__1').disabled = true
 					params = {
@@ -209,7 +214,7 @@
 		$("#reserve_form").on("submit", async function (event) {
 			event.preventDefault();
 			try {
-				
+
 				if (this.user_name.value && this.party__size.value) {
 					document.getElementById('reserveBtn').disabled = true
 					let selected = $("input[type='radio']:checked");
@@ -236,7 +241,7 @@
 							let url = '/reservations'
 							let { data } = await axios.post(url, params);
 							if (data.success) {
-								window.location='reservation-complete.html?reservation_id='+data.data._id
+								window.location = 'reservation-complete.html?reservation_id=' + data.data._id
 							} else {
 								document.getElementById('alert').innerHTML = `<div class="alert">
 									<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
@@ -266,11 +271,11 @@
 	})
 
 	// for pop up
-	function show_pop(){
-		document.getElementById("right-popup").style.display="inline";	
+	function show_pop() {
+		document.getElementById("right-popup").style.display = "inline";
 	}
 
-	function hide_pop(){
-		document.getElementById("right-popup").style.display="none"
+	function hide_pop() {
+		document.getElementById("right-popup").style.display = "none"
 	}
 </script>
