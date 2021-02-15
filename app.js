@@ -68,4 +68,4 @@ mongoose.connect(
 app.use(express.json());
 
 // start listening
-app.listen(3000, () => console.log('Server up and running port:3000'));
+app.listen(process.env.PORT || 3000);
