@@ -14,6 +14,8 @@
 		integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
 		crossorigin="anonymous">
 		</script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+	<script src="getUser.js"></script>
 
 </head>
 
@@ -35,7 +37,7 @@
 					<a href="/" class="navbar__links">About Us</a>
 				</li>
 				<li class="navbar__btn">
-					<a href="/public/login.html" class="button">LOGIN</a>
+					<a id='username' href="/public/login.html" class="button">LOGIN</a>
 				</li>
 			</ul>
 		</div>
@@ -46,10 +48,10 @@
 	<div class="right-section1">
 		<div class="subtitle">Reservation Information</div>
 		<form method="POST" id="reserve_form">
-		<label for="name" id="name__label">Enter Name:</label>
-		<input class="name_text" id="name" name="user_name">
+			<label for="name" id="name__label">Enter Name:</label>
+			<input class="name_text" id="name" name="user_name">
 
-		
+
 			<label for="party__size" id="ps__label">Party Size:</label>
 			<select id="party__size" name="party_size">
 				<option value="1">1</option>
@@ -116,7 +118,7 @@
 							</div>
 						</li>
 					</ul>
-					<ul  id="section2">
+					<ul id="section2">
 						<li>
 							<div class="reserv_circle">
 								<p style=" padding: 0px 0; text-align: center;">
@@ -202,45 +204,45 @@
 
 </html>
 <script>
-	const check_status=async ()=> {  ///getting status
-			let url= `/statuses/checkstatus`
-			let {data}=await axios.get(url)
+	const check_status = async () => {  ///getting status
+		let url = `/statuses/checkstatus`
+		let { data } = await axios.get(url)
 
-			if(data[0].status==2){  
-				let url= `/seats/1`
-				let table_no=await axios.get(url)
-				table_no=table_no.data
-				console.log(table_no)
-				table_no.forEach((obj)=>{
-					$(`#seat_no${obj.seat_number}`).attr("disabled", true)
-					let image_src = $(`#table_no${obj.seat_number}`).attr('src');
-					image_src = image_src.replace('on', 'off')
-					$(`#table_no${obj.seat_number}`).attr('src', image_src);
-				})
-				
-			}
+		if (data[0].status == 2) {
+			let url = `/seats/1`
+			let table_no = await axios.get(url)
+			table_no = table_no.data
+			console.log(table_no)
+			table_no.forEach((obj) => {
+				$(`#seat_no${obj.seat_number}`).attr("disabled", true)
+				let image_src = $(`#table_no${obj.seat_number}`).attr('src');
+				image_src = image_src.replace('on', 'off')
+				$(`#table_no${obj.seat_number}`).attr('src', image_src);
+			})
+
+		}
 
 
-			if(data[0].status==3){  
-				let url= `/seats`
-				let table_no=await axios.get(url)
-				table_no=table_no.data
-				console.log(table_no)
-				table_no.forEach((obj)=>{
-					$(`#seat_no${obj.seat_number}`).attr("disabled", true)
-					let image_src = $(`#table_no${obj.seat_number}`).attr('src');
-					image_src = image_src.replace('on', 'off')
-					$(`#table_no${obj.seat_number}`).attr('src', image_src);
-				})
-			}
-		};
+		if (data[0].status == 3) {
+			let url = `/seats`
+			let table_no = await axios.get(url)
+			table_no = table_no.data
+			console.log(table_no)
+			table_no.forEach((obj) => {
+				$(`#seat_no${obj.seat_number}`).attr("disabled", true)
+				let image_src = $(`#table_no${obj.seat_number}`).attr('src');
+				image_src = image_src.replace('on', 'off')
+				$(`#table_no${obj.seat_number}`).attr('src', image_src);
+			})
+		}
+	};
 	$(document).ready(function () {
-		
+
 		check_status()
 		$("#dateForm").on("submit", async function (event) {
 			event.preventDefault();
 			try {
-			
+
 				if (this.date.value && this.time.value) {
 					document.getElementById('submitBtn').disabled = true
 					params = {
@@ -284,7 +286,7 @@
 		$("#reserve_form").on("submit", async function (event) {
 			event.preventDefault();
 			try {
-				
+
 				if (this.user_name.value && this.party__size.value) {
 					document.getElementById('reserveBtn').disabled = true
 					let selected = $("input[type='radio']:checked");
@@ -311,7 +313,7 @@
 							let url = '/reservations'
 							let { data } = await axios.post(url, params);
 							if (data.success) {
-								window.location='reservation-complete.html?reservation_id='+data.data._id
+								window.location = 'reservation-complete.html?reservation_id=' + data.data._id
 							} else {
 								document.getElementById('alert').innerHTML = `<div class="alert">
 									<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 

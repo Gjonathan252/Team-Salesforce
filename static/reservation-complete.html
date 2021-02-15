@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
     <script src="js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script src="getUser.js"></script>
 </head>
 
 <body>
@@ -28,7 +30,7 @@
                     <a href="/" class="navbar__links">About Us</a>
                 </li>
                 <li class="navbar__btn">
-                    <a href="/public/login.html" class="button">LOGIN</a>
+                    <a id='username' href="/public/login.html" class="button">LOGIN</a>
                 </li>
             </ul>
         </div>
@@ -49,5 +51,5 @@
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const reservation_id = urlParams.get('reservation_id')
-    document.getElementById('reserve_span').innerHTML=reservation_id
+    document.getElementById('reserve_span').innerHTML = reservation_id
 </script>

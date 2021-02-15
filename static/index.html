@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/public/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script src="getUser.js"></script>
 
 </head>
 
@@ -32,7 +34,7 @@
                     <a href="/public/about.html" class="navbar__links">About Us</a>
                 </li>
                 <li class="navbar__btn">
-                    <a href="/public/login.html" class="button">LOGIN</a>
+                    <a id='username' href="/public/login.html" class="button">LOGIN</a>
                 </li>
             </ul>
         </div>
@@ -61,14 +63,3 @@
 </body>
 
 </html>
-
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-<script>
-    var authtoken = Cookies.get("auth-token");
-    fetch('http://localhost:3000/api/user/getUserName', { method: 'POST', authtoken })
-        .then(results => results.json())
-        .then(console.log);
-
-        //below will be condition to display users name or show login in the login btn top right.
-    // document.getElementById('username').innerHTML = authtoken;
-</script>
