@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Reserve = require('../Models/reservation');
+const Reserve = require('../models/reservation');
 
 router.post('/', async (req,res)=>{
     let timestamp = req.body.date+'T'+req.body.time+':00.000Z'
