@@ -1337,6 +1337,17 @@ table {
 .item__mini-box{
     width: 100%;
 }
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    }
+    
+.alert2 {
+padding: 20px;
+background-color: #0b8f4d;
+color: white;
+}
 
 @media screen and (max-width: 960px){
     .admin-menu-form{

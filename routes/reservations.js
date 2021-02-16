@@ -73,7 +73,7 @@ router.post('/check_status',async(req,res)=>{
         console.log(timestamp)
 
         for(let i=1;i<no_ofTables;i++){
-             posts = await Reserve.exists({start_date: {$lte: timestamp}, end_date: {$gte: timestamp}, table_num: i});
+             posts = await Reserve.exists( {$or:[{start_date: {$lte: timestamp}, end_date: {$gte: timestamp}, table_num: i},{start_date: {$lte: new Date(timestamp).setHours(new Date(timestamp).getHours() +2)}, end_date: {$gte: new Date(timestamp).setHours(new Date(timestamp).getHours() +2)}, table_num: i}]});
              table_status.push({
                  table_id:i,
                  status:posts

@@ -41,7 +41,7 @@
 		</div>
 	</nav>
 	<!--End Navbar section-->
-
+	<div id="alert"></div>
 	<!-- Start of Product section-->
 	<div class="right-section1-about" id="right-popup">
 		<button class="right-section-x" onclick="hide_pop()">X</button>
@@ -258,6 +258,11 @@
 
 					}
 
+				} else{
+					document.getElementById('alert').innerHTML = `<div class="alert">
+									<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+									 Select a reservation name!!!
+							</div>`
 				}
 				document.getElementById('reserveBtn').disabled = false
 			} catch (e) {
