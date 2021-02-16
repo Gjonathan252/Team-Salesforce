@@ -58,8 +58,9 @@ router.post('/login', async (req, res) => {
     if (!validPass) return res.cookie("Error", "Email or Password not found.").redirect('/public/login.html');
 
     //save checbox results
-    const adminAuthToken = jwt.sign({ _id: user._id }, process.env.Admin_Token_SECRET);
+    const adminAuthToken = jwt.sign({ _id: user._id }, process.env.Token_SECRET);
     res.cookie("auth-token", adminAuthToken);
+    res.cookie("contact", req.body.email);
     res.clearCookie('Error').redirect('/public/index.html');
 
 });
