@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Reserve = require('../models/reservation');
+const Order = require('../models/Order');
 
 router.post('/', async (req,res)=>{
     let timestamp = req.body.date+'T'+req.body.time+':00.000Z'
@@ -84,6 +85,36 @@ router.post('/check_status',async(req,res)=>{
     }catch(e){
         res.json(e)
     }
+})
+//below deals with 2 admin views to manage orders and reservations
+//delete reservation
+router.get('/delete/:reservationId', async (req,res)=>{
+    try{
+        const removedReservation = await Reserve.deleteOne({_id: req.params.reservationId});
+        res.redirect("/reservations/view")
+    }catch (err){
+        res.json({message: err});
+    }
+});
+router.get('/remove/:orderId', async (req,res)=>{
+    try{
+        const removedOrder = await Order.deleteOne({_id: req.params.orderId});
+        res.redirect("/reservations/view")
+    }catch (err){
+        res.json({message: err});
+    }
+});
+
+//render amdin reservation page for ALL ORDERS AND RESERVATIONS
+router.get('/view', async (req, res)=>{
+    try{
+        const allReservations = await Reserve.find({}).sort({"start_date": 1});
+        const allOrders = await Order.find({}).sort({"date": 1});
+        res.render('reservation', {reservations: allReservations, orders:allOrders});
+    }catch(err){
+        console.log(err);
+    }
+
 })
 
 module.exports =router;
