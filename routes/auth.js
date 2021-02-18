@@ -12,7 +12,9 @@ router.post('/register', async (req, res) => {
     //Validate befor use
     const { error } = registerValidation(req.body);
     // if (error) return res.status(400).send(error.details[0].message);
-    if (error) return res.cookie("Error", "Invalid Password").redirect('/public/create-account.html');
+    if (error) {
+        return res.cookie("Error", error.details[0].message).redirect('/public/create-account.html')
+    };
 
     //Check if user is already in DB
     const emailExist = await User.findOne({ email: req.body.email });
@@ -86,7 +88,7 @@ router.post('/adminCheck', async (req, res) => {
     const token = jwt.decode(req.body.authtoken, process.env.Admin_Token_SECRET);
     //Token is now _id and request for the users of that _id
     const uid = await User.findOne({ _id: token._id });
-    res.send({ _id: token._id });
+    res.send({ __v: uid.__v });
 });
 
 module.exports = router;

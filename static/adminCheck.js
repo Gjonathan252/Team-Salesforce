@@ -13,8 +13,8 @@ fetch('/api/user/adminCheck', {
         return response.json()
     })
     .then(function (data) {
-        if (data._id === "601b1b2d37181cdf8f000e54") {
-            console.log(data._id);
+        if (data.__v == "1") {
+            console.log(data);
             document.getElementById('username').innerHTML = ("Admin")
         }
         else {
