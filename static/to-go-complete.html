@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/public/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script src="getUser.js"></script>
     <script src="js/scripts.js"></script>
 </head>
 
@@ -32,7 +34,7 @@
                     <a href="/" class="navbar__links">About Us</a>
                 </li>
                 <li class="navbar__btn">
-                    <a href="/public/login.html" class="button">LOGIN</a>
+                    <a id='username' href="/public/login.html" class="button">LOGIN</a>
                 </li>
             </ul>
         </div>
@@ -41,10 +43,15 @@
 
     <!--Start of Main page section-->
     <div class="container__comp">
-        <p>Your Order is complete!<br><span>Your Order number is:</span></p>
+
+        <p>Your Order is complete!<br><span>Your Order number is: <br> <a id='Ordernumber'> </a> </span> </p>
     </div>
     <!--End of Main page section-->
 
 </body>
 
 </html>
+
+<script>
+    document.getElementById('Ordernumber').innerHTML = (Cookies.get("resNum"));
+</script>

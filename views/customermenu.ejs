@@ -255,26 +255,27 @@
                 </div>
 
                 <a href="/public/to-go-complete.html" class="to-go-cart-complete">
-                    <button class="btn btn-primary btn-purchase" type="button"><i
-                            class="fas fa-money-bill-wave"></i>Purchase</button>
+                    <button class="btn btn-primary btn-purchase" type="submit"><i
+                            class="fas fa-money-bill-wave"></i>Purchase</button> </a>
+                <span id="error"><span></span>
 
-
-                    <input href="/" class="btn btn-primary btn-purchase" type="submit" value=PURCHASE>
                     <!--Hidden values for customer info-->
                     <input id="name" type="hidden" name="customer_name" value>
                     <input id="contact" type="hidden" name="customer_contact" value>
             </form>
-
-            </a>
         </section>
         <!--End of Main page section-->
-
         <script src="/public/cart1.js"></script>
 </body>
 
 </html>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 <script>
+    var resError = "";
+    resError = Cookies.get("resError");
+    if (resError || resError === "undefined") {
+        document.getElementById('error').innerHTML = resError;
+    }
     document.getElementById('name').value = Cookies.get("name");
     document.getElementById('contact').value = Cookies.get("contact");
 </script>

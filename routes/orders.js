@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Order = require('../models/Order');
+const ck = require('js-cookie');
+const { createIndexes } = require('../models/Order');
 
 
 router.post('/new', async (req, res) => {
@@ -12,9 +14,9 @@ router.post('/new', async (req, res) => {
     });
     try {
         const savedOrder = await order.save();
-        res.json(savedOrder);
+        res.clearCookie('resError').cookie("resNum", savedOrder.id).redirect("/public/to-go-complete.html")
     } catch (err) {
-        res.json({ message: err });
+        res.cookie("resError", "Something went wrong! Call or place order at restaurant!").redirect("/items");
     }
 });
 
