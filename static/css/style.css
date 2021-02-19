@@ -1360,3 +1360,84 @@ table {
 
 
 /* End of admin-menu ////////////////////////////////////////////////////////// */
+
+/* Start of reservation.ejs ////////////////////////////////////////////////////////// */
+.main-split{
+    padding-top: 1.2rem;
+}
+
+.admin-splitter{
+    background-color: #E8D8BD;
+    padding: 0;
+}
+
+.splitter{
+    width: 80%;
+    height: 80vh;
+    overflow: auto;
+    text-align: left;
+    margin: auto;
+}
+
+.split-title{
+    padding-top: 1rem;
+    font-family: 'Comfortaa-Bold';
+    color: #B7860C;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.split-row{
+    border-bottom: 2px solid #B7860C;   
+}
+
+.split-data{
+    padding-top: 20px;
+}
+
+.split-button-left, .split-button-right{
+    height: 40px;
+    width: 30px; 
+    position: fixed;
+    top: 45vh;
+}
+
+.split-button-left{   
+    left: 0;
+}
+
+.split-button-right{
+    right: 0;
+}
+
+@media screen and (max-width: 960px){
+    .splitter{
+        position: relative;
+        width: 80%;
+        height: 80vh;
+        display: none;
+    }
+
+    .split-title{
+        font-size: 1rem;
+    }
+
+    .split-data p, .split-data a{
+        font-size: 0.8rem;
+    }
+
+    .split-button-left, .split-button-right{
+        height: 30px;
+        width: 20px;
+        top: 45vh;
+    }
+
+    .split-button-left{   
+        left: 0;
+    }
+
+    .split-button-right{
+        right: 0;
+    }
+}
+/* End of reservation.ejs ////////////////////////////////////////////////////////// */

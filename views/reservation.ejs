@@ -5,26 +5,103 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script src="getUser.js"></script>
 </head>
 <body>
-    <h1>All Reservations</h1>
-    <%reservations.forEach(reservation => {%>
-        <p><%= reservation.user_name %></p>
-        <p><%= reservation.party_size %></p>
-        <p><%= reservation.table_num %></p>
-        <p><%= reservation.start_date %></p>
-        <a href="/reservations/delete/<%= reservation._id %>" class="item__delete-text">Delete Reservation/Complete Reservation</a>
-        <p>End of one reservation</p>
-        <%})%>
+    <!--Start of Navbar section-->
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="/" id="navbar__logo"><i class="fas fa-stroopwafel"></i>Demo</a>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/public/index.html" class="navbar__links">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/public/menu.html" class="navbar__links">Menu</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/" class="navbar__links">About Us</a>
+                </li>
+                <li class="navbar__btn">
+                    <a id='username' href="/public/login.html" class="button">LOGIN</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--End Navbar section-->
 
-    <h1>All Orders</h1>
-    <%orders.forEach(order => {%>
-        <p><%= order.customer_name %></p>
-        <p><%= order.date %></p>
-        <p><%= order.customer_contact %></p>
-        <p><%= order.item_list %></p>
-        <p><%= order.total_price %></p>
-        <a href="/reservations/remove/<%= order._id %>" class="item__delete-text">Delete Order/Complete Order</a>
-        <%})%>
+    <!-- Start of Content -->
+
+    <div class="main-split">
+        <div class="splitter">
+            <table class="admin-splitter">
+                <tr>
+                    <th class="split-title">
+                        <h1>All Orders</h1>
+                    </th>
+                </tr>       
+                <%orders.forEach(order => {%>
+                    <tr class="split-row"> 
+                        <td class="split-data">
+                            <p>Name: <%= order.customer_name %></p>
+                            <p>Date: <%= order.date %></p>
+                            <p>Email: <%= order.customer_contact %></p>
+                            <p>Item(s): <%= order.item_list %></p>
+                            <p>Total: <%= order.total_price %></p>
+                            <a href="/reservations/remove/<%= order._id %>" class="item__delete-text">Delete Order/Complete Order</a>
+                        </td>
+                    </tr>
+                <%})%>           
+            </table> 
+        </div>
+        <div class="splitter">
+            <table class="admin-splitter">
+                <tr>
+                    <th class="split-title">
+                        <h1>All Reservations</h1>
+                    </th>
+                </tr>
+                <%reservations.forEach(reservation => {%>
+                    <tr class="split-row">
+                        <td class="split-data">
+                            <p>Name: <%= reservation.user_name %></p>
+                            <p>Size: <%= reservation.party_size %></p>
+                            <p>Table: <%= reservation.table_num %></p>
+                            <p>Date: <%= reservation.start_date %></p>
+                            <a href="/reservations/delete/<%= reservation._id %>" class="item__delete-text">Delete Reservation/Complete Reservation</a>
+                        </td>
+                    </tr>
+                <%})%>
+            </table>
+        </div>
+        <button class="split-button-left" onclick="plusDivs(-1)"><i class="fas fa-arrow-left"></i></button>
+        <button class="split-button-right" onclick="plusDivs(1)"><i class="fas fa-arrow-right"></i></button>
+    </div>
+
+    <!-- End of Content -->
+    <script src="/public/resNavbar.js"></script>
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+        
+        function plusDivs(n) {
+          showDivs(slideIndex += n);
+        }
+        
+        function showDivs(n) {
+          var i;
+          var x = document.getElementsByClassName("splitter");
+          if (n > x.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = x.length}
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+          }
+          x[slideIndex-1].style.display = "block";  
+        }
+        </script>
 </body>
 </html>
