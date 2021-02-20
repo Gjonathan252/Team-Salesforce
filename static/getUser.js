@@ -18,6 +18,7 @@ fetch('/api/user/getUserName', {
             document.getElementById('username').innerHTML = "LOGIN";
         }
         else {
+            Cookies.set('name', data.lastname);
             document.getElementById('username').innerHTML = (data.lastname)
         }
     });

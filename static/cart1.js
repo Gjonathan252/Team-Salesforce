@@ -2,26 +2,26 @@
 function openCity(evt, cityName) {
     // Declare all variables
     var i, tabcontent, tablinks;
-  
+
     // Get all elements with class="tabcontent" and hide them
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
+        tabcontent[i].style.display = "none";
     }
-  
+
     // Get all elements with class="tablinks" and remove the class "active"
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
-  
+
     // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
-  }
+}
 
-  /* Shopping Cart */
-  if (document.readyState == 'loading') {
+/* Shopping Cart */
+if (document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', ready)
 } else {
     ready()
@@ -48,15 +48,15 @@ function ready() {
 
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
 }
-
-function purchaseClicked() {
-    alert('Thank you for your purchase!')
-    var cartItems = document.getElementsByClassName('cart-items')[0]
-    while (cartItems.hasChildNodes()) {
-        cartItems.removeChild(cartItems.firstChild)
-    }
-    updateCartTotal()
-}
+//THIS FUNCTION WAS PREVENTING THE DATA FROM BEING SUBMITTED IF YOU CAN FIX IT WOULD BE NICE
+// function purchaseClicked() {
+//     alert('Thank you for your purchase!')
+//     var cartItems = document.getElementsByClassName('cart-items')[0]
+//     while (cartItems.hasChildNodes()) {
+//         cartItems.removeChild(cartItems.firstChild)
+//     }
+//     updateCartTotal()
+// }
 
 function removeCartItem(event) {
     var buttonClicked = event.target
@@ -92,11 +92,14 @@ function addItemToCart(title, price) {
             return
         }
     }
+
     var cartRowContents = `
         <div class="cart-item cart-column">
-            <strong class="cart-item-title">${title}</strong>
+            <strong name="item_list" "value="cart-item-title">${title}</strong>
+            <input type="hidden" name="item_list" id="cart-item-title" value =${title}>
         </div>
-        <p class="cart-price cart-column">${price}</p>
+        <p name="total_price" class="cart-price cart-column">${price}</p>
+        <input type="hidden" name="total_price" id="cart-price cart-column" value = ${price}>
         <div class="cart-quantity cart-column">
             <input class="cart-quantity-input" type="number" value="1">
             <button class="btn btn-danger" type="button">REMOVE</button>

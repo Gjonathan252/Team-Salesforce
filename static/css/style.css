@@ -470,6 +470,18 @@ body{
     font-size: 40px;
     color: #fff;
 } 
+
+@media screen and (max-width: 960px){
+    .container__comp p{
+        width: 85%;  
+        font-size: 3.2rem;      
+        padding: 15px;     
+    }
+    
+    .container__comp span{
+        font-size: 1.2rem;
+    } 
+}
 /* End of Reservation-Compltete */
 
 /* Start of Login */
@@ -544,26 +556,6 @@ body{
     background: #CFCD01;
     transition: all 0.5s ease;
 }
-
-.container__comp p{
-    width: 45%;
-    align-items: auto;
-    background-color: #131313;
-    font-size: 100px;
-    color: #fff;
-    padding: 25px;
-    border: 10px solid #000000;
-    font-family: 'Pacifico-Regular';
-    opacity: 0.9;
-    border-radius: 50px;
-    margin: auto;
-}
-
-.container__comp span{
-    font-family: 'Pacifico-Regular';
-    font-size: 40px;
-    color: #fff;
-} 
 
 @media screen and (max-width: 960px){
     .container__log{
@@ -733,9 +725,6 @@ table {
 /* End of admin ////////////////////////////////////////////////////////////////// */
 
 /* Start of menu ///////////////////////////////////////////////////////////////// */
-
-/* Style the tab */
-/* Go from zero to full opacity */
 @keyframes fadeEffect {
     from {opacity: 0;}
     to {opacity: 1;}
@@ -754,10 +743,8 @@ table {
     background: #751016;
 }
 
-  /* Style the buttons that are used to open the tab content */
 .tab button {
     background-color: inherit;
-    float: left;
     border: none;
     outline: none;
     cursor: pointer;
@@ -768,23 +755,20 @@ table {
     font-size: 20px;
 }
   
-  /* Change background color of buttons on hover */
 .tab button:hover {
     background-color: #F1992B;
 }
   
-  /* Create an active/current tablink class */
 .tab button.active {
     background-color: #F1992B;
 }
   
-  /* Style the tab content */
 .tabcontent {
     display: none;
     padding: 6px 12px;
     border: 5px solid #751016;
     border-top: none;
-    animation: fadeEffects 1s; /* Fading effect takes 1 second */
+    animation: fadeEffects 1s;
     background: #E8D8BD;
     width: 95%;
     margin: auto;
@@ -1001,6 +985,11 @@ table {
 
     .cart-quantity-input{
         margin-right: 8px;
+    }
+
+    .tab button {
+        padding: 2px 10px;
+        font-size: 14px;
     }
 }
 
@@ -1302,13 +1291,14 @@ table {
 }
 
 .item__list{
-    width: 95%;
+    width: 22%;
     background-color: #E8D8BD;
-    margin:auto;
     top: 0;
+    margin: 0 3vh 1rem;
     border: 6px solid #B7860C;
     border-radius: 8px;
     padding: 0.4rem;
+    float: left;
 }
 
 .admin-menu-seperator{
@@ -1367,7 +1357,111 @@ color: white;
     .admin-menu-col-1{
         width: 30%;
     }
+
+    .item__list{
+        width: 83%;
+        background-color: #E8D8BD;
+        top: 0;
+        margin: 0 4vh 1rem;
+        border: 6px solid #B7860C;
+        border-radius: 8px;
+        padding: 0.4rem;
+        float: left;
+    }
+    
+    .item__list h1{
+        font-size: 1rem;
+        border-bottom: 2px solid #131313;
+        padding-bottom: 0.5rem;
+    }
+}
+/* End of admin-menu ////////////////////////////////////////////////////////// */
+
+/* Start of reservation.ejs ////////////////////////////////////////////////////////// */
+.main-split{
+    padding-top: 0.2rem;
 }
 
+.admin-splitter{
+    background-color: #E8D8BD;
+    padding: 0;
+}
 
-/* End of admin-menu ////////////////////////////////////////////////////////// */
+.splitter{
+    width: 40%;
+    height: 80vh;
+    overflow: auto;
+    text-align: left;
+    margin: 0 3.5rem;
+    float: left;
+}
+
+.split-left{
+    float: left;
+}
+
+.split-right{
+    float: right;
+}
+
+.split-title{
+    padding-top: 1rem;
+    font-family: 'Comfortaa-Bold';
+    color: #B7860C;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.split-row{
+    border-bottom: 2px solid #B7860C;   
+}
+
+.split-data{
+    padding-top: 20px;
+}
+
+.split-button-left, .split-button-right{
+    display: none;
+}
+
+.res-form1{
+    padding: 2rem 0 7px;
+}
+
+@media screen and (max-width: 960px){
+    .splitter{
+        width: 80%;
+        height: 65vh;
+        display: none;
+        margin: auto;
+    }
+
+    .split-left, .split-right{
+        float: none;
+    }
+
+    .split-title{
+        font-size: 1rem;
+    }
+
+    .split-data p, .split-data a{
+        font-size: 0.8rem;
+    }
+
+    .split-button-left, .split-button-right{
+        display: inline-block;
+        height: 50px;
+        width: 30px;
+        top: 50vh;
+        position: absolute;
+    }
+
+    .split-button-left{   
+        left: 0;
+    }
+
+    .split-button-right{
+        right: 0;
+    }
+}
+/* End of reservation.ejs ////////////////////////////////////////////////////////// */

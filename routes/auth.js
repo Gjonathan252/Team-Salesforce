@@ -12,7 +12,9 @@ router.post('/register', async (req, res) => {
     //Validate befor use
     const { error } = registerValidation(req.body);
     // if (error) return res.status(400).send(error.details[0].message);
-    if (error) return res.cookie("Error", "Invalid Password").redirect('/public/create-account.html');
+    if (error) {
+        return res.cookie("Error", error.details[0].message).redirect('/public/create-account.html')
+    };
 
     //Check if user is already in DB
     const emailExist = await User.findOne({ email: req.body.email });
@@ -58,8 +60,10 @@ router.post('/login', async (req, res) => {
     if (!validPass) return res.cookie("Error", "Email or Password not found.").redirect('/public/login.html');
 
     //save checbox results
-    const adminAuthToken = jwt.sign({ _id: user._id }, process.env.Admin_Token_SECRET);
-    res.cookie("auth-token", adminAuthToken);
+    const AuthToken = jwt.sign({ _id: user._id }, process.env.Token_SECRET);
+    res.cookie("auth-token", AuthToken);
+    res.cookie("contact", req.body.email);
+    res.cookie("tokenCheck", user.__v); //quick check if admin or not
     res.clearCookie('Error').redirect('/public/index.html');
 
 });
@@ -84,8 +88,18 @@ router.post('/adminCheck', async (req, res) => {
     //decodes token and saves it in token
     const token = jwt.decode(req.body.authtoken, process.env.Admin_Token_SECRET);
     //Token is now _id and request for the users of that _id
-    const uid = await User.findOne({ _id: token._id });
-    res.send({ _id: token._id });
+    if (token == null) {
+        return res.cookie("Error", "You don't have access to this page. If you think you are seeing the message by mistake, please contact administrator.").redirect('/public/login.html');
+    }
+    else if (token !== null) {
+        const uid = await User.findOne({ _id: token._id });
+        if (uid.__v != '1') {
+            return res.cookie("Error", "You don't have access to this page. If you think you are seeing the message by mistake, please contact administrator.").send({ __v: uid.__v });
+        }
+        else {
+            res.send({ __v: uid.__v })
+        };
+    };
 });
 
 module.exports = router;

@@ -33,7 +33,7 @@ router.patch('/:itemId', async (req,res) =>{
 });
 
 //Delete a menu item
-router.get('/delete/:itemId', async (req,res)=>{// changed to app.get to work with admin menu
+router.get('/delete/:itemId', async (req,res)=>{
     try{
         const removedItem = await Item.deleteOne({_id: req.params.itemId});
         res.redirect("/items/admin")

@@ -16,19 +16,24 @@
     <!--Start of Navbar section-->
     <nav class="navbar">
         <div class="navbar__container">
-            <a href="/" id="navbar__logo"><i class="fas fa-stroopwafel"></i>Restaurant Name</a>
+            <a href="/" id="navbar__logo"><i class="fas fa-stroopwafel"></i>Demo</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
             <ul class="navbar__menu">
                 <li class="navbar__item">
                     <a href="/public/index.html" class="navbar__links">Home</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="/public/menu.html" class="navbar__links">Menu</a>
+                    <a href="http://localhost:3000/items/admin" class="navbar__links">Menu</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="/" class="navbar__links">About Us</a>
+                    <a href="/public/about.html" class="navbar__links">About Us</a>
                 </li>
                 <li class="navbar__btn">
-                    <a href="/public/login.html" class="button">LOGIN</a>
+                    <a id='username' href="/public/login.html" class="button">LOGIN</a>
                 </li>
             </ul>
         </div>
@@ -75,7 +80,7 @@
         </div>
     </div>
     <!--End of Main page section-->
-
+    <script src="/public/resNavbar.js"></script>
 </body>
 
 </html>
