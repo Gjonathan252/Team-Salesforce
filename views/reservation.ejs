@@ -16,15 +16,20 @@
     <nav class="navbar">
         <div class="navbar__container">
             <a href="/" id="navbar__logo"><i class="fas fa-stroopwafel"></i>Demo</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
             <ul class="navbar__menu">
                 <li class="navbar__item">
                     <a href="/public/index.html" class="navbar__links">Home</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="/public/menu.html" class="navbar__links">Menu</a>
+                    <a href="http://localhost:3000/items/admin" class="navbar__links">Menu</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="/" class="navbar__links">About Us</a>
+                    <a href="/public/about.html" class="navbar__links">About Us</a>
                 </li>
                 <li class="navbar__btn">
                     <a id='username' href="/public/login.html" class="button">LOGIN</a>
@@ -37,7 +42,7 @@
     <!-- Start of Content -->
 
     <div class="main-split">
-        <div class="splitter">
+        <div class="splitter split-left">
             <table class="admin-splitter">
                 <tr>
                     <th class="split-title">
@@ -58,7 +63,7 @@
                 <%})%>           
             </table> 
         </div>
-        <div class="splitter">
+        <div class="splitter split-right">
             <table class="admin-splitter">
                 <tr>
                     <th class="split-title">
@@ -85,23 +90,27 @@
     <!-- End of Content -->
     <script src="/public/resNavbar.js"></script>
     <script>
-        var slideIndex = 1;
-        showDivs(slideIndex);
-        
-        function plusDivs(n) {
-          showDivs(slideIndex += n);
+
+        if (document.documentElement.clientWidth < 960) {
+            var slideIndex = 1;
+                showDivs(slideIndex);
+
+                function plusDivs(n) {
+                    showDivs(slideIndex += n);
+                }
+
+                function showDivs(n) {
+                    var i;
+                    var x = document.getElementsByClassName("splitter");
+                    if (n > x.length) {slideIndex = 1}
+                    if (n < 1) {slideIndex = x.length}
+                    for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";  
+                    }
+                    x[slideIndex-1].style.display = "block";  
+                } 
         }
-        
-        function showDivs(n) {
-          var i;
-          var x = document.getElementsByClassName("splitter");
-          if (n > x.length) {slideIndex = 1}
-          if (n < 1) {slideIndex = x.length}
-          for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";  
-          }
-          x[slideIndex-1].style.display = "block";  
-        }
-        </script>
+               
+    </script>
 </body>
 </html>

@@ -22,24 +22,29 @@
 
 	<!--Start of Navbar section-->
 	<nav class="navbar">
-		<div class="navbar__container">
-			<a href="/" id="navbar__logo"><i class="fas fa-stroopwafel"></i>Demo</a>
-			<ul class="navbar__menu">
-				<li class="navbar__item">
-					<a href="/public/index.html" class="navbar__links">Home</a>
-				</li>
-				<li class="navbar__item">
-					<a href="/public/menu.html" class="navbar__links">Menu</a>
-				</li>
-				<li class="navbar__item">
-					<a href="/" class="navbar__links">About Us</a>
-				</li>
-				<li class="navbar__btn">
-					<a id='username' href="/public/login.html" class="button">LOGIN</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+        <div class="navbar__container">
+            <a href="/" id="navbar__logo"><i class="fas fa-stroopwafel"></i>Demo</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/public/index.html" class="navbar__links">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="http://localhost:3000/items/admin" class="navbar__links">Menu</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/public/about.html" class="navbar__links">About Us</a>
+                </li>
+                <li class="navbar__btn">
+                    <a id='username' href="/public/login.html" class="button">LOGIN</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 	<!--End Navbar section-->
 
 	<!-- Start of Product section-->
@@ -47,18 +52,21 @@
 		<button class="right-section-x" onclick="hide_pop()">X</button>
 		<div class="subtitle">Reservation Information</div>
 		<form method="POST" id="reserve_form">
-			<label for="name" id="name__label">Enter Name:</label>
-			<input class="name_text" id="name" name="user_name">
-
-			<label for="party__size" id="ps__label">Party Size:</label>
-			<select id="party__size" name="party_size">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-			</select>
+			<div class="rName-box">
+				<label for="name" id="name__label">Enter Name:</label>
+				<input class="name_text" id="name" name="user_name">
+			</div>
+			<div class="rPart-box">
+				<label for="party__size" id="ps__label">Party Size:</label>
+				<select id="party__size" name="party_size">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+				</select>
+			</div>	
 			<input class="Make__Reservation" type="submit" value="Make Reservation" id="reserveBtn"></input>
 		</form>
 	</div>
@@ -120,13 +128,10 @@
 	</div>
 
 	<!-- End of Product section-->
+	<script src="/public/resNavbar.js"></script>
 </body>
 
 </html>
-
-
-
-
 
 <script>
 

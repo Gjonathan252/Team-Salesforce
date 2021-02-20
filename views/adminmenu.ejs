@@ -94,52 +94,32 @@
     <!-- Start of bottom section -->
     <table class="list__box">
         <tr>
-            <td>
-                <div class="item__list">
-                    <table>
-                        <tr>
-                            <th>
-                                <h1>Drinks</h1>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <%itemList.forEach(item=> {%>
-                                    <%if(item.item_category=="drink"){%>
-                                        <div class="item__mini-box">
-                                            <strong>
-                                                <%= item.item_name%>
-                                            </strong>
-                                            <p>
-                                                <%= item.item_price%>
-                                            </p>
-                                            <p>
-                                                <%= item._id%>
-                                            </p>
-                                            <p>
-                                                <%= item.item_details%>
-                                            </p>
-                                            <a href="/items/delete/<%= item._id %>" class="item__delete-text">Delete
-                                                Menu item</a>
-                                            <hr class="item__breaker">
-                                        </div>
-                                        <%}%>
-                                            <%})%>
-                            </td>
-                        </tr>
-                    </table>
+                <div class="item__list">                   
+                    <h1>Drinks</h1> 
+                    <%itemList.forEach(item=> {%>
+                        <%if(item.item_category=="drink"){%>
+                            <div class="item__mini-box">
+                                <strong>
+                                    <%= item.item_name%>
+                                </strong>
+                                <p>
+                                    <%= item.item_price%>
+                                </p>
+                                <p>
+                                    <%= item._id%>
+                                </p>
+                                <p>
+                                    <%= item.item_details%>
+                                </p>
+                                <a href="/items/delete/<%= item._id %>" class="item__delete-text">Delete
+                                    Menu item</a>
+                                <hr class="item__breaker">
+                            </div>
+                        <%}%>
+                    <%})%>
                 </div>
-            </td>
-            <td>
                 <div class="item__list">
-                    <table>
-                        <tr>
-                            <th>
                                 <h1>Burgers</h1>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
                                 <%itemList.forEach(item=> {%>
                                     <%if(item.item_category=="burger"){%>
                                         <div class="item__mini-box">
@@ -161,21 +141,9 @@
                                         </div>
                                         <%}%>
                                             <%})%>
-                            </td>
-                        </tr>
-                    </table>
                 </div>
-            </td>
-            <td>
                 <div class="item__list">
-                    <table>
-                        <tr>
-                            <th>
                                 <h1>Pastas</h1>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
                                 <%itemList.forEach(item=> {%>
                                     <%if(item.item_category=="pasta"){%>
                                         <div class="item__mini-box">
@@ -197,21 +165,9 @@
                                         </div>
                                         <%}%>
                                             <%})%>
-                            </td>
-                        </tr>
-                    </table>
                 </div>
-            </td>
-            <td>
                 <div class="item__list">
-                    <table>
-                        <tr>
-                            <th>
                                 <h1>Pizzas</h1>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
                                 <%itemList.forEach(item=> {%>
                                     <%if(item.item_category=="pizza"){%>
                                         <div class="item__mini-box">
@@ -233,14 +189,10 @@
                                         </div>
                                         <%}%>
                                             <%})%>
-                            </td>
-                        </tr>
-                    </table>
                 </div>
-            </td>
         </tr>
     </table>
-
+    <script src="/public/resNavbar.js"></script>
     <!-- End of bottom section -->
 </body>
 
