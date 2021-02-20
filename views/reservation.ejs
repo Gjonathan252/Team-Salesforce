@@ -36,6 +36,23 @@
 
     <!-- Start of Content -->
 
+    <!-- Start of Form to view and submit new status change-->
+    <h1 style="color:red;">Update Status</h1>
+    <form method="POST" action="/reservations/update/5ffb4dbba7731d342041b156">
+        <table>
+            <tr>
+                <label for="status" style="color:red;">Update status to</label>
+                <select name="status" id="status">
+                    <option value=1>1-Full Dining</option>
+                    <option value=2>2-Limited Dining</option>
+                    <option value=3>3-Take out only</option>
+                </select>
+            </tr>
+
+        </table>
+        <button style="color:red;">Update Current Status</button>
+    </form>
+
     <div class="main-split">
         <div class="splitter">
             <table class="admin-splitter">
