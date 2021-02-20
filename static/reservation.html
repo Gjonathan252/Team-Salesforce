@@ -16,194 +16,127 @@
 		</script>
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 	<script src="getUser.js"></script>
-
 </head>
-
 
 <body>
 
 	<!--Start of Navbar section-->
 	<nav class="navbar">
-		<div class="navbar__container">
-			<a href="/" id="navbar__logo"><i class="fas fa-stroopwafel"></i>Restaurant Name</a>
-			<ul class="navbar__menu">
-				<li class="navbar__item">
-					<a href="/public/index.html" class="navbar__links">Home</a>
-				</li>
-				<li class="navbar__item">
-					<a href="/public/menu.html" class="navbar__links">Menu</a>
-				</li>
-				<li class="navbar__item">
-					<a href="/" class="navbar__links">About Us</a>
-				</li>
-				<li class="navbar__btn">
-					<a id='username' href="/public/login.html" class="button">LOGIN</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+        <div class="navbar__container">
+            <a href="/" id="navbar__logo"><i class="fas fa-stroopwafel"></i>Demo</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/public/index.html" class="navbar__links">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="http://localhost:3000/items/admin" class="navbar__links">Menu</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/public/about.html" class="navbar__links">About Us</a>
+                </li>
+                <li class="navbar__btn">
+                    <a id='username' href="/public/login.html" class="button">LOGIN</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 	<!--End Navbar section-->
 	<div id="alert"></div>
 	<!-- Start of Product section-->
-	<div class="right-section1">
+	<div class="right-section1-about" id="right-popup">
+		<button class="right-section-x" onclick="hide_pop()">X</button>
 		<div class="subtitle">Reservation Information</div>
 		<form method="POST" id="reserve_form">
-			<label for="name" id="name__label">Enter Name:</label>
-			<input class="name_text" id="name" name="user_name">
-
-
-			<label for="party__size" id="ps__label">Party Size:</label>
-			<select id="party__size" name="party_size">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-			</select>
+			<div class="rName-box">
+				<label for="name" id="name__label">Enter Name:</label>
+				<input class="name_text" id="name" name="user_name">
+			</div>
+			<div class="rPart-box">
+				<label for="party__size" id="ps__label">Party Size:</label>
+				<select id="party__size" name="party_size">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+				</select>
+			</div>	
 			<input class="Make__Reservation" type="submit" value="Make Reservation" id="reserveBtn"></input>
 		</form>
-
 	</div>
 
-	<div class="Products_Section1">
-		<div class="left-section1">
+	<div class="Products_Section1-about">
+		<div class="left-section1-about">
 			<div class="top-Tab1">
-				<form method="POST" id="dateForm">
-					<ul>
-						<li>Date:<input type="date" name="date" id="date"></li>
-						<li>Time:<input type="time" name="time" id="time"></li>
-						<li><input type="submit" value="Check" id="submitBtn"></li>
-					</ul>
+				<form method="POST" id="dateForm-about">
+					<div class="left-top-about">
+						<div class="date-about">Date:<input type="date" name="date" id="date__1"></div>
+						<div class="time-about">Time:<input type="time" name="time" id="time__1" min="09:00" max="18:00"
+								required></div>
+						<div class="submit-about"><input type="submit" value="Check" id="submitBtn__1"></div>
+						<img src="images/Legend.png" alt="Legend" class="legend__img">
+					</div>
 				</form>
 			</div>
-			<div class="content_col3">
-				<div class="top-Tab3">
-					<ul id="section1">
-						<li>
-							<div class="reserv_circle">
-								<p style=" padding: 0px 0; text-align: center;">
-									<img src="images/swap/img_swap_off.png" alt="" />
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="reserv_circle">
-								<p style=" padding: 0px 0; text-align: center;">
-									<label>
-										<input type="radio" name="table_num" value="1" id="seat_no1">
-										<img src="images/img_swap_on.png" alt="" class="img-swap" id="table_no1" />
-									</label>
-								</p>
-							</div>
-						</li>
-
-						<li>
-							<div class="reserv_circle">
-								<p style=" padding: 0px 0; text-align: center;">
-									<label>
-										<input type="radio" name="table_num" value="2" id="seat_no2">
-										<img src="images/img_swap_on.png" alt="" class="img-swap" id="table_no2" />
-									</label>
-								</p>
-							</div>
-						</li>
-
-						<li>
-							<div class="reserv_circle">
-								<p style=" padding: 0px 0; text-align: center;">
-									<a href="/public/registration-complete.html"><img src="images/swap/img_swap_on.png"
-											alt="" class="img-swap" /></a>
-								</p>
-							</div>
-						</li>
-					</ul>
-					<ul id="section2">
-						<li>
-							<div class="reserv_circle">
-								<p style=" padding: 0px 0; text-align: center;">
-									<a href="/public/registration-complete.html"><img src="images/swap/img_swap_on.png"
-											alt="" class="img-swap" /></a>
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="reserv_circle">
-								<p style=" padding: 0px 0; text-align: center;">
-									<label>
-										<input type="radio" name="table_num" value="3" id="seat_no3">
-										<img src="images/img_swap_on.png" alt="" class="img-swap" id="table_no3" />
-									</label>
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="reserv_circle">
-								<p style=" padding: 0px 0; text-align: center;">
-									<label>
-										<input type="radio" name="table_num" value="4" id="seat_no4">
-										<img src="images/img_swap_on.png" alt="" class="img-swap" id="table_no4" />
-									</label>
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="reserv_circle">
-								<p style=" padding: 0px 0; text-align: center;">
-									<img src="images/swap/img_swap_on.png" alt="" />
-								</p>
-							</div>
-						</li>
-					</ul>
-					<ul id="section3">
-						<li>
-							<div class="reserv_circle">
-								<p style=" padding: 0px 0; text-align: center;">
-									<img src="images/enterance.png" alt="" />
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="reserv_circle">
-								<p style=" padding: 0px 0; text-align: center;">
-									<label>
-										<input type="radio" name="table_num" value="5" id="seat_no5">
-										<img src="images/img_swap_on.png" alt="" class="img-swap" id="table_no5" />
-									</label>
-								</p>
-							</div>
-						</li>
-
-						<li>
-							<div class="reserv_circle">
-								<p style=" padding: 0px 0; text-align: center;">
-									<label>
-										<input type="radio" name="table_num" value="6" id="seat_no6">
-										<img src="images/img_swap_on.png" alt="" class="img-swap" id="table_no6" />
-									</label>
-								</p>
-							</div>
-						</li>
-
-						<li>
-							<div class="reserv_circle">
-								<p style=" padding: 0px 0; text-align: center;">
-									<a href="/public/registration-complete.html"><img src="images/swap/img_swap_on.png"
-											alt="" class="img-swap" /></a>
-								</p>
-							</div>
-						</li>
-					</ul>
+			<div class="content_col3-about">
+				<div class="reserve-table table1">
+					<label class="rev-table-small-1">
+						<img src="images/table-s-un.png" alt="" class="img-swap" id="table_no1" onclick="show_pop()" />
+						<input type="radio" name="table_num" value="1" id="seat_no1">
+					</label>
+				</div>
+				<div class="reserve-table table2">
+					<label class="rev-table-large-1">
+						<img src="images/table-l-un.png" alt="" class="img-swap-l" id="table_no2"
+							onclick="show_pop()" />
+						<input type="radio" name="table_num" value="2" id="seat_no2">
+					</label>
+				</div>
+				<div class="reserve-table table3">
+					<label class="rev-table-small-1">
+						<img src="images/table-s-un.png" alt="" class="img-swap" id="table_no3" onclick="show_pop()" />
+						<input type="radio" name="table_num" value="3" id="seat_no3">
+					</label>
+				</div>
+				<div class="reserve-table table4">
+					<label class="rev-table-small-1">
+						<img src="images/table-s-un.png" alt="" class="img-swap" id="table_no4" onclick="show_pop()" />
+						<input type="radio" name="table_num" value="4" id="seat_no4">
+					</label>
+				</div>
+				<div class="reserve-table table5">
+					<label class="rev-table-large-1">
+						<img src="images/table-l-un.png" alt="" class="img-swap-l" id="table_no5"
+							onclick="show_pop()" />
+						<input type="radio" name="table_num" value="5" id="seat_no5">
+					</label>
+				</div>
+				<div class="reserve-table table6">
+					<label class="rev-table-small-1">
+						<img src="images/table-s-un.png" alt="" class="img-swap" id="table_no6" onclick="show_pop()" />
+						<input type="radio" name="table_num" value="6" id="seat_no6">
+					</label>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- End of Product section-->
+	<script src="/public/resNavbar.js"></script>
 </body>
 
 </html>
+
 <script>
+
+
+
 	const check_status = async () => {  ///getting status
 		let url = `/statuses/checkstatus`
 		let { data } = await axios.get(url)
@@ -216,7 +149,7 @@
 			table_no.forEach((obj) => {
 				$(`#seat_no${obj.seat_number}`).attr("disabled", true)
 				let image_src = $(`#table_no${obj.seat_number}`).attr('src');
-				image_src = image_src.replace('on', 'off')
+				image_src = image_src.replace('un', 'cov')
 				$(`#table_no${obj.seat_number}`).attr('src', image_src);
 			})
 
@@ -231,7 +164,7 @@
 			table_no.forEach((obj) => {
 				$(`#seat_no${obj.seat_number}`).attr("disabled", true)
 				let image_src = $(`#table_no${obj.seat_number}`).attr('src');
-				image_src = image_src.replace('on', 'off')
+				image_src = image_src.replace('un', 'cov')
 				$(`#table_no${obj.seat_number}`).attr('src', image_src);
 			})
 		}
@@ -239,17 +172,17 @@
 	$(document).ready(function () {
 
 		check_status()
-		$("#dateForm").on("submit", async function (event) {
+		$("#dateForm-about").on("submit", async function (event) {
 			event.preventDefault();
 			try {
 
 				if (this.date.value && this.time.value) {
-					document.getElementById('submitBtn').disabled = true
+					document.getElementById('submitBtn__1').disabled = true
 					params = {
 						date: this.date.value,
 						time: this.time.value
 					}
-					let url = '/reservations/check_status/checkstatus'
+					let url = '/reservations/check_status'
 					let { data } = await axios.post(url, params);
 
 					console.log(data)
@@ -258,7 +191,7 @@
 						if (table.status) {
 
 							let image_src = $(`#table_no${table.table_id}`).attr('src');
-							image_src = image_src.replace('on', 'off')
+							image_src = image_src.replace('un', 'res')
 
 
 							$(`#table_no${table.table_id}`).attr('src', image_src);
@@ -267,17 +200,17 @@
 
 						} else {
 							let image_src = $(`#table_no${table.table_id}`).attr('src');
-							image_src = image_src.replace('off', 'on')
+							image_src = image_src.replace('res', 'un')
 							$(`#table_no${table.table_id}`).attr('src', image_src);
 							$("input[type=radio][value=" + table.table_id + "]").attr("disabled", false);
 						}
 					});
 					check_status()
-					document.getElementById('submitBtn').disabled = false
+					document.getElementById('submitBtn__1').disabled = false
 				}
 			} catch (e) {
 				console.log(e)
-				document.getElementById('submitBtn').disabled = false
+				document.getElementById('submitBtn__1').disabled = false
 			}
 
 		})
@@ -330,6 +263,11 @@
 
 					}
 
+				} else{
+					document.getElementById('alert').innerHTML = `<div class="alert">
+									<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+									 Select a reservation name!!!
+							</div>`
 				}
 				document.getElementById('reserveBtn').disabled = false
 			} catch (e) {
@@ -341,4 +279,13 @@
 
 
 	})
+
+	// for pop up
+	function show_pop() {
+		document.getElementById("right-popup").style.display = "inline";
+	}
+
+	function hide_pop() {
+		document.getElementById("right-popup").style.display = "none"
+	}
 </script>
