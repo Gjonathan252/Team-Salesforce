@@ -4,7 +4,12 @@ const StatusSchema = mongoose.Schema({
     status: {
         type: Number,
         required: true
+    },
+    Name:{
+        type: String,
+        default: 'Master'
     }
+    
 });
 
 module.exports = mongoose.model('status', StatusSchema);
