@@ -110,13 +110,13 @@ router.get('/remove/:orderId', async (req,res)=>{
 router.post('/update/:statusId', async (req, res)=>{
     try{
         const updatedStatus = await Status.findOneAndUpdate(
-            {_id: req.params.statusID},
+            {_id: req.params.statusId},
             {$set: {status: req.body.status}},
             {new: true}
             
         );
-        //res.send(updatedStatus)
-        res.redirect("/reservations/view")
+        //res.send(updatedStatus);
+        res.redirect("/reservations/view");
     } catch (err){
         res.json({mseeage: err});
     }
