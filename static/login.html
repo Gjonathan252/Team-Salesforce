@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/public/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 </head>
 
 <body>
@@ -47,15 +48,9 @@
                 <input type="text" id="name__passbox" name="email" placeholder="Email">
                 <label for="password" id="name__pass">Password</label>
                 <input type="text" id="name__passbox" name="password" placeholder="Password">
-                <input href="/" class="log__button" type="submit" value=LOGIN>
-
-                <!-- <input type="checkbox" value="1" id="custom7" checked="checked" />
-                <input type="hidden" value="1" id="hdncustom7" name="custom7" />
-                <label for="custom7">Email me more info?</label> -->
-
-
-                <!-- <a href="/" class="log__button">LOGIN</a> -->
+                <button href="/" class="log__button" type="submit">LOGIN</button>
             </form>
+
             <div><span id="error"><span></span></div>
             <div class="comment">
                 <span>Don't have an account yet?</span>
@@ -68,8 +63,6 @@
 </body>
 
 </html>
-
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 <script>
     var error = "";
     error = Cookies.get("Error");

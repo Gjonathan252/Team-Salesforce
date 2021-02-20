@@ -1,4 +1,7 @@
 var authtoken = Cookies.get("auth-token");
+if (authtoken == undefined) {
+    window.location.href = "/public/login.html";
+}
 // let data = { authtoken: authtoken };
 fetch('/api/user/adminCheck', {
     method: 'POST',
@@ -13,11 +16,10 @@ fetch('/api/user/adminCheck', {
         return response.json()
     })
     .then(function (data) {
-        if (data.__v == "1") {
-            console.log(data);
-            document.getElementById('username').innerHTML = ("Admin")
+        if (data.__v == "0") {
+            window.location.href = "/public/login.html";
         }
         else {
-            window.location.href = "/public/index.html";
+            document.getElementById('username').innerHTML = ("Admin")
         }
     });
