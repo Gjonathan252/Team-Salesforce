@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,8 +10,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-    <script src="getUser.js"></script>
+    <script src="/public/adminCheck.js"></script>
 </head>
+
 <body>
     <!--Start of Navbar section-->
     <nav class="navbar">
@@ -40,100 +42,113 @@
     <!--End Navbar section-->
 
     <!-- Start of Content -->
-    <%status.forEach(check => {%>
+    <%status.forEach(check=> {%>
         <strong style="color:red;">Current Status is <%= check.status %></strong>
-    <%})%>  
-    <!-- Start of Form to view and submit new status change-->
-    <h1 style="color:red;">Update Status</h1>
-    <form class="res-form1" method="POST" action="/reservations/update/5ffb4dbba7731d342041b156">
-        <table>
-            <tr>
-                <label for="status" style="color:red;">Update status to</label>
-                <select name="status" id="status">
-                    <option value=1>1-Full Dining</option>
-                    <option value=2>2-Limited Dining</option>
-                    <option value=3>3-Take out only</option>
-                </select>
-            </tr>
-
-        </table>
-        <button style="color:red;">Update Current Status</button>
-    </form>
-
-    <div class="main-split">
-        <div class="splitter split-left">
-            <table class="admin-splitter">
-                <tr>
-                    <th class="split-title">
-                        <h1>All Orders</h1>
-                    </th>
-                </tr>       
-                <%orders.forEach(order => {%>
-                    <tr class="split-row"> 
-                        <td class="split-data">
-                            <p>Name: <%= order.customer_name %></p>
-                            <p>Date: <%= order.date %></p>
-                            <p>Email: <%= order.customer_contact %></p>
-                            <strong>Order contents</strong>
-                            
-                            <%var length = order.item_list.length;%>
-                            <%for (var i=0; i < length; i++){%>
-                                <p><%= order.item_list[i] %> --- <%= order.total_price[i]%></p>
-                           <% }%>
-                            <a href="/reservations/remove/<%= order._id %>" class="item__delete-text">Delete Order/Complete Order</a>
-                        </td>
+        <%})%>
+            <!-- Start of Form to view and submit new status change-->
+            <h1 style="color:red;">Update Status</h1>
+            <form class="res-form1" method="POST" action="/reservations/update/5ffb4dbba7731d342041b156">
+                <table>
+                    <tr>
+                        <label for="status" style="color:red;">Update status to</label>
+                        <select name="status" id="status">
+                            <option value=1>1-Full Dining</option>
+                            <option value=2>2-Limited Dining</option>
+                            <option value=3>3-Take out only</option>
+                        </select>
                     </tr>
-                <%})%>           
-            </table> 
-        </div>
-        <div class="splitter split-right">
-            <table class="admin-splitter">
-                <tr>
-                    <th class="split-title">
-                        <h1>All Reservations</h1>
-                    </th>
-                </tr>
-                <%reservations.forEach(reservation => {%>
-                    <tr class="split-row">
-                        <td class="split-data">
-                            <p>Name: <%= reservation.user_name %></p>
-                            <p>Size: <%= reservation.party_size %></p>
-                            <p>Table: <%= reservation.table_num %></p>
-                            <p>Date: <%= reservation.start_date %></p>
-                            <a href="/reservations/delete/<%= reservation._id %>" class="item__delete-text">Delete Reservation/Complete Reservation</a>
-                        </td>
-                    </tr>
-                <%})%>
-            </table>
-        </div>
-        <button class="split-button-left" onclick="plusDivs(-1)"><i class="fas fa-arrow-left"></i></button>
-        <button class="split-button-right" onclick="plusDivs(1)"><i class="fas fa-arrow-right"></i></button>
-    </div>
 
-    <!-- End of Content -->
-    <script src="/public/resNavbar.js"></script>
-    <script>
+                </table>
+                <button style="color:red;">Update Current Status</button>
+            </form>
 
-        if (document.documentElement.clientWidth < 960) {
-            var slideIndex = 1;
-                showDivs(slideIndex);
+            <div class="main-split">
+                <div class="splitter split-left">
+                    <table class="admin-splitter">
+                        <tr>
+                            <th class="split-title">
+                                <h1>All Orders</h1>
+                            </th>
+                        </tr>
+                        <%orders.forEach(order=> {%>
+                            <tr class="split-row">
+                                <td class="split-data">
+                                    <p>Name: <%= order.customer_name %>
+                                    </p>
+                                    <p>Date: <%= order.date %>
+                                    </p>
+                                    <p>Email: <%= order.customer_contact %>
+                                    </p>
+                                    <strong>Order contents</strong>
 
-                function plusDivs(n) {
-                    showDivs(slideIndex += n);
+                                    <%var length=order.item_list.length;%>
+                                        <%for (var i=0; i < length; i++){%>
+                                            <p>
+                                                <%= order.item_list[i] %> --- $<%= order.total_price[i]%> Qty <%=
+                                                            order.quantity[i]%>
+                                            </p>
+                                            <% }%>
+                                                <a href="/reservations/remove/<%= order._id %>"
+                                                    class="item__delete-text">Delete Order/Complete Order</a>
+                                </td>
+                            </tr>
+                            <%})%>
+                    </table>
+                </div>
+                <div class="splitter split-right">
+                    <table class="admin-splitter">
+                        <tr>
+                            <th class="split-title">
+                                <h1>All Reservations</h1>
+                            </th>
+                        </tr>
+                        <%reservations.forEach(reservation=> {%>
+                            <tr class="split-row">
+                                <td class="split-data">
+                                    <p>Name: <%= reservation.user_name %>
+                                    </p>
+                                    <p>Size: <%= reservation.party_size %>
+                                    </p>
+                                    <p>Table: <%= reservation.table_num %>
+                                    </p>
+                                    <p>Date: <%= reservation.start_date %>
+                                    </p>
+                                    <a href="/reservations/delete/<%= reservation._id %>"
+                                        class="item__delete-text">Delete Reservation/Complete Reservation</a>
+                                </td>
+                            </tr>
+                            <%})%>
+                    </table>
+                </div>
+                <button class="split-button-left" onclick="plusDivs(-1)"><i class="fas fa-arrow-left"></i></button>
+                <button class="split-button-right" onclick="plusDivs(1)"><i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <!-- End of Content -->
+            <script src="/public/resNavbar.js"></script>
+            <script>
+
+                if (document.documentElement.clientWidth < 960) {
+                    var slideIndex = 1;
+                    showDivs(slideIndex);
+
+                    function plusDivs(n) {
+                        showDivs(slideIndex += n);
+                    }
+
+                    function showDivs(n) {
+                        var i;
+                        var x = document.getElementsByClassName("splitter");
+                        if (n > x.length) { slideIndex = 1 }
+                        if (n < 1) { slideIndex = x.length }
+                        for (i = 0; i < x.length; i++) {
+                            x[i].style.display = "none";
+                        }
+                        x[slideIndex - 1].style.display = "block";
+                    }
                 }
 
-                function showDivs(n) {
-                    var i;
-                    var x = document.getElementsByClassName("splitter");
-                    if (n > x.length) {slideIndex = 1}
-                    if (n < 1) {slideIndex = x.length}
-                    for (i = 0; i < x.length; i++) {
-                        x[i].style.display = "none";  
-                    }
-                    x[slideIndex-1].style.display = "block";  
-                } 
-        }
-               
-    </script>
+            </script>
 </body>
+
 </html>

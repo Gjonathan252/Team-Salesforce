@@ -96,12 +96,12 @@ function addItemToCart(title, price) {
     var cartRowContents = `
         <div class="cart-item cart-column">
             <strong name="item_list" "value="cart-item-title">${title}</strong>
-            <input type="hidden" name="item_list" id="cart-item-title" value =${title}>
+            <input type="hidden" name="item_list" id="cart-item-title" value = "${title}">
         </div>
         <p name="total_price" class="cart-price cart-column">${price}</p>
         <input type="hidden" name="total_price" id="cart-price cart-column" value = ${price}>
         <div class="cart-quantity cart-column">
-            <input class="cart-quantity-input" type="number" value="1">
+            <input class="cart-quantity-input" name="quantity" type="number" value="1">
             <button class="btn btn-danger" type="button">REMOVE</button>
         </div>`
     cartRow.innerHTML = cartRowContents

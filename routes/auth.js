@@ -13,13 +13,13 @@ router.post('/register', async (req, res) => {
     const { error } = registerValidation(req.body);
     // if (error) return res.status(400).send(error.details[0].message);
     if (error) {
-        return res.cookie("Error", error.details[0].message).redirect('/public/create-account.html')
+        return res.cookie("Error", error.details[0].message, { maxAge: 1000 }).redirect('/public/create-account.html')
     };
 
     //Check if user is already in DB
     const emailExist = await User.findOne({ email: req.body.email });
     // if (emailExist) return res.status(400).send('Email already exists');
-    if (emailExist) return res.cookie("Error", "Invalid Email").redirect('/public/create-account.html');
+    if (emailExist) return res.cookie("Error", "Invalid Email", { maxAge: 1000 }).redirect('/public/create-account.html');
 
     //Hash password
     const salt = await bcrypt.genSalt(10);
@@ -36,7 +36,7 @@ router.post('/register', async (req, res) => {
         const savedUser = await user.save();
         if (!error) res.clearCookie('Error').redirect('/public/index.html');
     } catch (err) {
-        res.cookie("Error", "Oops! Something went wrong").redirect('/public/create-account.html');
+        res.cookie("Error", "Oops! Something went wrong", { maxAge: 1000 }).redirect('/public/create-account.html');
     }
 });
 
@@ -45,25 +45,24 @@ router.post('/login', async (req, res) => {
     //Validate befor use
     const { error } = loginValidation(req.body);
     // if (error) return res.status(400).send(error.details[0].message);
-    if (error) return res.cookie("Error", "Email or Password not found.").redirect('/public/login.html');
+    if (error) return res.cookie("Error", "Email or Password not found.", { maxAge: 1000 }).redirect('/public/login.html');
 
     //CHANGE .send msg to 'Email or password is wrong' for security reasons
     //Check if email exist
     const user = await User.findOne({ email: req.body.email });
     // if (!user) return res.status(400).send('Email is not found');
-    if (!user) return res.cookie("Error", "Email or Password not found.").redirect('/public/login.html');
+    if (!user) return res.cookie("Error", "Email or Password not found.", { maxAge: 1000 }).redirect('/public/login.html');
 
     //CHANGE .send msg to 'Email or password is wrong' for security reasons
     //Check if password is correct
     const validPass = await bcrypt.compare(req.body.password, user.password);
     // if (!validPass) return res.status(400).send('Invalid pasword');
-    if (!validPass) return res.cookie("Error", "Email or Password not found.").redirect('/public/login.html');
+    if (!validPass) return res.cookie("Error", "Email or Password not found.", { maxAge: 1000 }).redirect('/public/login.html');
 
     //save checbox results
     const AuthToken = jwt.sign({ _id: user._id }, process.env.Token_SECRET);
-    res.cookie("auth-token", AuthToken);
-    res.cookie("contact", req.body.email);
-    res.cookie("tokenCheck", user.__v); //quick check if admin or not
+    res.cookie("auth-token", AuthToken, { maxAge: 1800000 });
+    res.cookie("contact", req.body.email, { maxAge: 1800000 });
     res.clearCookie('Error').redirect('/public/index.html');
 
 });
@@ -89,12 +88,12 @@ router.post('/adminCheck', async (req, res) => {
     const token = jwt.decode(req.body.authtoken, process.env.Admin_Token_SECRET);
     //Token is now _id and request for the users of that _id
     if (token == null) {
-        return res.cookie("Error", "You don't have access to this page. If you think you are seeing the message by mistake, please contact administrator.").redirect('/public/login.html');
+        return res.cookie("Error", "You don't have access to this page. If you think you are seeing the message by mistake, please contact administrator.", { maxAge: 1000 }).redirect('/public/login.html');
     }
     else if (token !== null) {
         const uid = await User.findOne({ _id: token._id });
         if (uid.__v != '1') {
-            return res.cookie("Error", "You don't have access to this page. If you think you are seeing the message by mistake, please contact administrator.").send({ __v: uid.__v });
+            return res.cookie("Error", "You don't have access to this page. If you think you are seeing the message by mistake, please contact administrator.", { maxAge: 1000 }).send({ __v: uid.__v });
         }
         else {
             res.send({ __v: uid.__v })

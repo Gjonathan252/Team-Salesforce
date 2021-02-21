@@ -10,7 +10,8 @@ router.post('/new', async (req, res) => {
         customer_name: req.body.customer_name,
         customer_contact: req.body.customer_contact,
         item_list: req.body.item_list,
-        total_price: req.body.total_price
+        total_price: req.body.total_price,
+        quantity: req.body.quantity
     });
     try {
         const savedOrder = await order.save();

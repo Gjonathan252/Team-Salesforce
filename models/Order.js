@@ -15,6 +15,9 @@ const OrderSchema = mongoose.Schema({
     total_price: {
         type: [Number]
     },
+    quantity: {
+        type: [Number]
+    },
     date: {
         type: Date,
         default: Date.now
