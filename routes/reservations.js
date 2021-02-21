@@ -125,9 +125,10 @@ router.post('/update/:statusId', async (req, res)=>{
 //render amdin reservation page for ALL ORDERS AND RESERVATIONS
 router.get('/view', async (req, res)=>{
     try{
+        const statusCheck = await Status.find({});
         const allReservations = await Reserve.find({}).sort({"start_date": 1});
         const allOrders = await Order.find({}).sort({"date": 1});
-        res.render('reservation', {reservations: allReservations, orders:allOrders});
+        res.render('reservation', {reservations: allReservations, orders:allOrders, status:statusCheck});
     }catch(err){
         console.log(err);
     }

@@ -40,7 +40,9 @@
     <!--End Navbar section-->
 
     <!-- Start of Content -->
-
+    <%status.forEach(check => {%>
+        <strong style="color:red;">Current Status is <%= check.status %></strong>
+    <%})%>  
     <!-- Start of Form to view and submit new status change-->
     <h1 style="color:red;">Update Status</h1>
     <form class="res-form1" method="POST" action="/reservations/update/5ffb4dbba7731d342041b156">
@@ -72,8 +74,12 @@
                             <p>Name: <%= order.customer_name %></p>
                             <p>Date: <%= order.date %></p>
                             <p>Email: <%= order.customer_contact %></p>
-                            <p>Item(s): <%= order.item_list %></p>
-                            <p>Total: <%= order.total_price %></p>
+                            <strong>Order contents</strong>
+                            
+                            <%var length = order.item_list.length;%>
+                            <%for (var i=0; i < length; i++){%>
+                                <p><%= order.item_list[i] %> --- <%= order.total_price[i]%></p>
+                           <% }%>
                             <a href="/reservations/remove/<%= order._id %>" class="item__delete-text">Delete Order/Complete Order</a>
                         </td>
                     </tr>
