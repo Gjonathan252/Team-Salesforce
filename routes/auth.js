@@ -63,6 +63,7 @@ router.post('/login', async (req, res) => {
     const AuthToken = jwt.sign({ _id: user._id }, process.env.Token_SECRET);
     res.cookie("auth-token", AuthToken, { maxAge: 1800000 });
     res.cookie("contact", req.body.email, { maxAge: 1800000 });
+    res.cookie("check", user.__v, { maxAge: 1800000 });
     res.clearCookie('Error').redirect('/public/index.html');
 
 });
@@ -92,7 +93,7 @@ router.post('/adminCheck', async (req, res) => {
     }
     else if (token !== null) {
         const uid = await User.findOne({ _id: token._id });
-        if (uid.__v != '1') {
+        if (uid.__v != 1) {
             return res.cookie("Error", "You don't have access to this page. If you think you are seeing the message by mistake, please contact administrator.", { maxAge: 1000 }).send({ __v: uid.__v });
         }
         else {

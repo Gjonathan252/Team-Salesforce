@@ -2,6 +2,12 @@ var authtoken = Cookies.get("auth-token");
 if (authtoken == undefined) {
     window.location.href = "/public/login.html";
 }
+
+var check = Cookies.get("check");
+if (check == 0) {
+    window.location.href = "/public/login.html";
+}
+
 // let data = { authtoken: authtoken };
 fetch('/api/user/adminCheck', {
     method: 'POST',
