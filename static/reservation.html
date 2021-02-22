@@ -237,7 +237,15 @@
 
 						let date = $("input[name='date']").val();
 						let time = $("input[name='time']").val();
-						if (date.length < 2 || time.length < 2) {
+						if(time < '9:00' || time < '18:00')
+						{
+							document.getElementById('alert').innerHTML = `<div class="alert">
+									<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+									Restaurant Closed..Please Select other Time!!!
+								</div>`
+
+						}
+						else if (date.length < 2 || time.length < 2) {
 							document.getElementById('alert').innerHTML = `<div class="alert">
 									<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
 									 Select a Date and Time for reservation!!!
