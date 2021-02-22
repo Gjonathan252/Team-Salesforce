@@ -7,7 +7,7 @@ const Status = require('../models/Status');
 router.post('/', async (req,res)=>{
     let timestamp = req.body.date+'T'+req.body.time+':00.000Z'
     const xxx = await Reserve.exists({start_date: {$lte: timestamp}, end_date: {$gte: timestamp}, table_num: req.body.table_num});
-    const xxxx = await Reserve.exists({start_date: {$lte: new Date(timestamp).setHours(new Date(timestamp).getHours() +2)}, end_date: {$gte: new Date(timestamp).setHours(new Date(timestamp).getHours() +2)},table_num: req.body.table_num});
+    const xxxx = await Reserve.exists({start_date: {$lte: new Date(new Date(timestamp).setHours(new Date(timestamp).getHours() +2)).setMinutes(new Date(timestamp).getMinutes() -01)}, end_date: {$gte: new Date(new Date(timestamp).setHours(new Date(timestamp).getHours() +2)).setMinutes(new Date(timestamp).getMinutes() -01)},table_num: req.body.table_num});
     console.log(xxx)
     if(xxx){
         return res.send({
@@ -29,7 +29,7 @@ router.post('/', async (req,res)=>{
         party_size:req.body.party_size,
         table_num: req.body.table_num,
         start_date: timestamp,
-        end_date:  new Date(timestamp).setHours(new Date(timestamp).getHours() +2)
+        end_date:  new Date(new Date(timestamp).setHours(new Date(timestamp).getHours() +2)).setMinutes(new Date(timestamp).getMinutes() -01)
     });
     try {
         const savedPost = await post.save();
@@ -75,7 +75,7 @@ router.post('/check_status',async(req,res)=>{
         console.log(timestamp)
 
         for(let i=1;i<no_ofTables;i++){
-             posts = await Reserve.exists( {$or:[{start_date: {$lte: timestamp}, end_date: {$gte: timestamp}, table_num: i},{start_date: {$lte: new Date(timestamp).setHours(new Date(timestamp).getHours() +2)}, end_date: {$gte: new Date(timestamp).setHours(new Date(timestamp).getHours() +2)}, table_num: i}]});
+             posts = await Reserve.exists( {$or:[{start_date: {$lte: timestamp}, end_date: {$gte: timestamp}, table_num: i},{start_date: {$lte: new Date(new Date(timestamp).setHours(new Date(timestamp).getHours() +2)).setMinutes(new Date(timestamp).getMinutes() -01)}, end_date: {$gte: new Date(new Date(timestamp).setHours(new Date(timestamp).getHours() +2)).setMinutes(new Date(timestamp).getMinutes() -01)}, table_num: i}]});
              table_status.push({
                  table_id:i,
                  status:posts
