@@ -43,14 +43,14 @@
 
     <!-- Start of Content -->
     <%status.forEach(check=> {%>
-        <strong style="color:red;">Current Status is <%= check.status %></strong>
+        <strong class="status-pre">Current Status is <%= check.status %></strong>
         <%})%>
             <!-- Start of Form to view and submit new status change-->
-            <h1 style="color:red;">Update Status</h1>
+            <h1 class="status-tile">Update Status</h1>
             <form class="res-form1" method="POST" action="/reservations/update/5ffb4dbba7731d342041b156">
                 <table>
                     <tr>
-                        <label for="status" style="color:red;">Update status to</label>
+                        <label for="status" class="status-cho">Update status to</label>
                         <select name="status" id="status">
                             <option value=1>1-Full Dining</option>
                             <option value=2>2-Limited Dining</option>
@@ -59,7 +59,7 @@
                     </tr>
 
                 </table>
-                <button style="color:red;">Update Current Status</button>
+                <button class="status-button">Update Current Status</button>
             </form>
 
             <div class="main-split">
