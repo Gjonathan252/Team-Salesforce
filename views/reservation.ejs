@@ -88,6 +88,7 @@
                                     </p>
                                     <p>Email: <%= order.customer_contact %>
                                     </p>
+                                    <p>Reference: <%= order.id %></p>
                                     <strong>Order contents</strong>
 
                                     <%var length=order.item_list.length;%>
@@ -122,6 +123,7 @@
                                     </p>
                                     <p>Date: <%= reservation.start_date %>
                                     </p>
+                                    <p>Reference: <%= reservation.id %></p>
                                     <a href="/reservations/delete/<%= reservation._id %>"
                                         class="item__delete-text">Delete Reservation/Complete Reservation</a>
                                 </td>
