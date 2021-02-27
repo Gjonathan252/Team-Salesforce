@@ -237,19 +237,20 @@
 
 						let date = $("input[name='date']").val();
 						let time = $("input[name='time']").val();
-						let time1 = $("input[name='time']");
-						if(time1 < 9)
+						var hour = time.split(':');
+						hour= parseInt(hour[0]);
+						if(hour < 9)
 						{
-							console.log(time)
+							console.log(hour)
 							document.getElementById('alert').innerHTML = `<div class="alert">
 									<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
 									Restaurant Closed..Please Select other Time!!!
 								</div>`
 
 						}
-						else if(time1 > 18)
+						else if(hour > 18)
 						{
-							console.log(time)
+							console.log(hour)
 							document.getElementById('alert').innerHTML = `<div class="alert">
 									<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
 									Restaurant Closed..Please Select other Time!!!
