@@ -237,7 +237,8 @@
 
 						let date = $("input[name='date']").val();
 						let time = $("input[name='time']").val();
-						if(time < '9:00')
+						let time1 = $("input[name='time']");
+						if(time1 < 9)
 						{
 							console.log(time)
 							document.getElementById('alert').innerHTML = `<div class="alert">
@@ -246,7 +247,7 @@
 								</div>`
 
 						}
-						else if(time > '18:00')
+						else if(time1 > 18)
 						{
 							console.log(time)
 							document.getElementById('alert').innerHTML = `<div class="alert">
